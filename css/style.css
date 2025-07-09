@@ -46,31 +46,53 @@
   .logo {
     font-size: 2.6rem;
     font-weight: 900;
-    background: linear-gradient(90deg, #d97706, #b45309);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
     letter-spacing: 3px;
-    text-shadow:
-      0 0 6px rgba(184, 85, 9, 0.6),
-      0 0 12px rgba(217, 119, 6, 0.3);
-    animation: tigerPulse 4s ease-in-out infinite;
+    display: flex;
+    gap: 12px;
   }
   
-  @keyframes tigerPulse {
+  /* TIGER pulsating: orange ↔ black */
+  .logo-black {
+    animation: tigerBlink 2s infinite ease-in-out;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow:
+      0 0 6px rgba(249, 115, 22, 0.5),
+      0 0 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* POS pulsating: black ↔ orange */
+  .logo-red {
+    animation: posBlink 2s infinite ease-in-out;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow:
+      0 0 6px rgba(0, 0, 0, 0.5),
+      0 0 12px rgba(249, 115, 22, 0.3);
+  }
+  @keyframes tigerBlink {
     0%, 100% {
-      text-shadow:
-        0 0 6px rgba(184, 85, 9, 0.6),
-        0 0 12px rgba(217, 119, 6, 0.3);
-      transform: scale(1);
+      color: black;
+      text-shadow: 0 0 6px rgba(249, 115, 22, 0.4);
     }
     50% {
-      text-shadow:
-        0 0 10px rgba(255, 140, 0, 0.8),
-        0 0 20px rgba(255, 140, 0, 0.4);
-      transform: scale(1.05);
+      color: rgba(249, 115, 22, 1); /* orange used in dots */
+      text-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
     }
   }
+  
+  @keyframes posBlink {
+    0%, 100% {
+      color: rgba(249, 115, 22, 1); /* orange */
+      text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+      color: black;
+      text-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+    }
+  }
+  
+  
   
   /* Nav styles */
   .nav {
