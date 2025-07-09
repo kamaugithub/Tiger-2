@@ -53,44 +53,43 @@
   
   /* TIGER pulsating: orange ↔ black */
   .logo-black {
-    animation: tigerBlink 2s infinite ease-in-out;
+    animation: tigerBlink 3s infinite ease-in-out;
     font-weight: 900;
     text-transform: uppercase;
-    text-shadow:
-      0 0 6px rgba(249, 115, 22, 0.5),
-      0 0 12px rgba(0, 0, 0, 0.3);
+    color: black;
+    text-shadow: 0 0 3px rgba(249, 115, 22, 0.3); /* subtle warm glow */
   }
   
   /* POS pulsating: black ↔ orange */
   .logo-red {
-    animation: posBlink 2s infinite ease-in-out;
+    animation: posBlink 3s infinite ease-in-out;
     font-weight: 900;
     text-transform: uppercase;
-    text-shadow:
-      0 0 6px rgba(0, 0, 0, 0.5),
-      0 0 12px rgba(249, 115, 22, 0.3);
+    color: rgba(249, 115, 22, 1);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.25); /* light edge halo */
   }
   @keyframes tigerBlink {
     0%, 100% {
       color: black;
-      text-shadow: 0 0 6px rgba(249, 115, 22, 0.4);
+      text-shadow: 0 0 3px rgba(249, 115, 22, 0.3);
     }
     50% {
-      color: rgba(249, 115, 22, 1); /* orange used in dots */
-      text-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+      color: rgba(249, 115, 22, 1);
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
     }
   }
   
   @keyframes posBlink {
     0%, 100% {
-      color: rgba(249, 115, 22, 1); /* orange */
-      text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+      color: rgba(249, 115, 22, 1);
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
     }
     50% {
       color: black;
-      text-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+      text-shadow: 0 0 3px rgba(249, 115, 22, 0.3);
     }
   }
+  
   
   
   
@@ -216,12 +215,9 @@
       text-align: left;
     }
   }
-  
-  
-  
-  /* Hero Section */
-  .hero {
-    background-color:var(--hero-bg);
+   /* Hero Section */
+   .hero {
+    background: radial-gradient(circle at center, #fff7ed 0%, #f5f5f5 80%);
     padding-top: 120px;
     padding-bottom: 80px;
     min-height: 100vh;
@@ -232,7 +228,7 @@
     flex-direction: column;
   }
   
-  
+   
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -298,7 +294,7 @@
     background: var(--accent-gradient);
     color: var(--text-dark); 
     padding: 12px 24px;
-    margin-top: 90px;   /* 👈 Sits lower in hero */
+    margin-top: 90px;   
     border: none;
     border-radius: 8px;
     text-decoration: none;
@@ -312,7 +308,7 @@
   
   
   .cta-btn:hover {
-    background: linear-gradient(90deg, #ff8200, #ffe08a); /* Match hover tone used in nav links */
+    background: linear-gradient(90deg, #ff8200, #ffe08a); 
     color: white;
   }
   .hero-perks-row {
@@ -419,6 +415,65 @@
       bottom: 10px;
     }
   }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+  
+  .badge {
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    background: white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Thematic colors */
+  .badge.orange {
+    background-color: rgba(249, 115, 22, 1); /* primary-orange */
+    color: white;
+  }
+  
+  .badge.gold {
+    background-color: rgba(255, 204, 112, 1); /* secondary-gold */
+    color: rgb(12, 12, 12);
+  }
+  
+  /* Optional hover flair */
+  .badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  @media (max-width: 768px) {
+    .hero-badges {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .badge {
+      width: auto;
+      text-align: center;
+    }
+  }
+  .badge.gold:last-child {
+    animation: badgePulse 3s ease-in-out infinite;
+  }
+  @keyframes badgePulse {
+    0%, 100% {
+      box-shadow: 0 0 6px rgba(255, 204, 112, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(255, 204, 112, 0.6);
+    }
+  }
+      
   
       /*About Section */
   .about-container-card {
