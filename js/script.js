@@ -1,13 +1,20 @@
-window.addEventListener('scroll', function () {
+document.addEventListener('DOMContentLoaded', () => {
+  // Scroll-based navbar shadow effect
+  window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    if (navbar) {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
   });
 
-// Mobile menu toggle
-const toggle = document.getElementById('menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('nav');
 
-toggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  }
 });
 
