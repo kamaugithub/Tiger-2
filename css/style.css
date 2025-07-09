@@ -23,6 +23,16 @@
     padding: 20px 40px;
     background-color: transparent;
   }
+  
+  .navbar.scrolled {
+    background-color: white;
+    padding: 40px 40px; /* Increased vertical padding */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  
+  
   .navbar-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -32,27 +42,14 @@
     align-items: center;
   }
   
-  .navbar.scrolled {
-    background-color: white;
-    padding: 12px 40px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* glow effect */
-    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
+  /* Logo styles */
   .logo {
     font-size: 2.6rem;
     font-weight: 900;
-    background: linear-gradient(90deg, #d97706, #b45309); /* deeper orange/gold */
+    background: linear-gradient(90deg, #d97706, #b45309);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6); /* strong outline */
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
     letter-spacing: 3px;
     text-shadow:
       0 0 6px rgba(184, 85, 9, 0.6),
@@ -75,9 +72,7 @@
     }
   }
   
-
-  
-  
+  /* Nav styles */
   .nav {
     display: flex;
     align-items: center;
@@ -104,6 +99,102 @@
     background: var(--accent-gradient);
     color: white;
   }
+  
+  /* Hamburger icon styling */
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-dark);
+  }
+  
+  /* Responsive tweaks for screens below 768px */
+  @media (max-width: 768px) {
+    .navbar-container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav {
+      display: none;
+      flex-direction: column;
+      background-color: white;
+      width: 100%;
+      margin-top: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav.active {
+      display: flex;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      padding: 0;
+    }
+  
+    .nav-links li {
+      width: 100%;
+    }
+  
+    .nav-links li a {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+  }
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+      font-size: 2.2rem;
+      color: var(--text-dark);
+      padding: 10px;
+      cursor: pointer;
+    }
+  
+    .nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+  
+    .nav.active {
+      display: flex;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .nav-links li {
+      width: 100%;
+    }
+  
+    .nav-links li a {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+  }
+  
   
   
   /* Hero Section */
