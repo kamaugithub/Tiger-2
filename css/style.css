@@ -377,6 +377,27 @@
       box-shadow: 0 0 16px rgba(255, 204, 112, 0.5);
     }
   }
+  @media (max-width: 768px) {
+    .hero-preview-card {
+      padding: 20px;
+      margin-top: 32px;
+      border-radius: 12px;
+      max-width: 95%;
+    }
+  
+    .preview-image {
+      border-radius: 12px;
+      width: 100%;
+      height: auto;
+    }
+  
+    .preview-label {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      bottom: 10px;
+    }
+  }
+  
       /*About Section */
   .about-container-card {
     background-color: white;
