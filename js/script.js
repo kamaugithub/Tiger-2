@@ -1,20 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Scroll-based navbar shadow effect
-  window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
-    }
-  });
-
-  // Mobile menu toggle
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('nav');
 
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
+  toggle.addEventListener('click', () => {
+    const isExpanded = nav.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', isExpanded);
+    nav.setAttribute('aria-hidden', !isExpanded);
+  });
+
+  // Optional: Hide menu on link click (mobile UX)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.setAttribute('aria-hidden', 'true');
     });
-  }
+  });
 });
+
+
 
