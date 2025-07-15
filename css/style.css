@@ -505,7 +505,7 @@ user-select: none;
   content: '';
   position: absolute;
   background-color: var(--primary-orange);
-  box-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+  box-shadow: 0 0 8px rgba(19, 18, 18, 0.6);
   transition: all 0.4s ease;
   z-index: 1;
 }
@@ -775,3 +775,119 @@ transition: transform 0.3s ease;
     width: 100%;
   }
 }
+/* === Login Page Styling === */
+.login-section {
+  min-height: 86vh; /* ↓ from 93vh */
+  padding-top: 100px; /* gives space below navbar */
+  padding-bottom:90px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* aligns card just below navbar */
+  background: radial-gradient(circle at center, var(--light-bg) 0%, var(--hero-bg) 80%);
+  position: relative;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 10px;            
+}
+
+.login-card {
+  background-color: white;
+  border-radius: 14px;
+  padding: 30px 24px; /* ↓ reduced vertical padding */
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+  animation: glowBorder 3s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 60px;
+}
+
+.login-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 24px rgba(255, 140, 0, 0.3);
+}
+
+.login-card h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--primary-orange);
+  margin-bottom: 24px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Input Styling */
+.login-card input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-orange);
+  font-size: 1rem;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: black;
+}
+/*login button styling*/
+@keyframes loginPulse {
+  0%, 100% {
+    background: var(--accent-gradient);
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    background: linear-gradient(90deg, #ff8200, #ffe08a);
+    box-shadow: 0 0 16px rgba(255, 204, 112, 0.6);
+    transform: scale(1.04);
+  }
+}
+
+.login-btn-unique {
+  margin: 24px auto 0 auto;       /* Push it slightly lower and center it */
+  display: block;
+  padding: 14px 22px;             /* Balanced height and width */
+  background: var(--accent-gradient);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  animation: loginPulse 2.5s ease-in-out infinite;
+  animation-fill-mode: both;
+}
+.login-btn-unique:hover {
+  background: linear-gradient(90deg, #ff8200, #ffe08a);
+  color: var(--text-dark);
+}
+.login-btn-unique:focus {
+  background: linear-gradient(90deg, #ff8200, #ffe08a);
+  color: white;
+  outline: none;
+}
+
+/* login home icon Styling */
+.home-icon {
+  font-size: 1.8rem;
+  color: var(--primary-orange);
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.home-icon:hover,
+.home-icon:focus {
+  color: black;
+  outline: none;
+}
+
