@@ -692,14 +692,14 @@ transition: transform 0.3s ease;
 .site-footer {
   background-color: #111;
   color: white;
-  padding: 15px 20px; /* reduced padding for less height */
+  padding: 15px 20px;
   font-family: 'Segoe UI', sans-serif;
   font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap; /* prevent wrapping so items stay on one line */
-  gap: 40px; /* increase gap to space items farther */
+  gap: 40px; 
 }
 
 .footer-container {
@@ -735,7 +735,7 @@ transition: transform 0.3s ease;
   color: var(--primary-orange);
   text-decoration: none;
   font-weight: 700;
-  font-size: 1rem; /* smaller link text */
+  font-size: 1rem; 
 }
 
 .footer-right a:hover,
@@ -777,12 +777,12 @@ transition: transform 0.3s ease;
 }
 /* === Login Page Styling === */
 .login-section {
-  min-height: 86vh; /* ↓ from 93vh */
-  padding-top: 100px; /* gives space below navbar */
+  min-height: 86vh; 
+  padding-top: 100px; 
   padding-bottom:90px;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* aligns card just below navbar */
+  align-items: flex-start; 
   background: radial-gradient(circle at center, var(--light-bg) 0%, var(--hero-bg) 80%);
   position: relative;
 }
@@ -797,7 +797,7 @@ transition: transform 0.3s ease;
 .login-card {
   background-color: white;
   border-radius: 14px;
-  padding: 30px 24px; /* ↓ reduced vertical padding */
+  padding: 30px 24px; 
   max-width: 400px;
   width: 100%;
   box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
@@ -840,20 +840,18 @@ transition: transform 0.3s ease;
 @keyframes loginPulse {
   0%, 100% {
     background: var(--accent-gradient);
-    box-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
     transform: scale(1);
   }
   50% {
     background: linear-gradient(90deg, #ff8200, #ffe08a);
-    box-shadow: 0 0 16px rgba(255, 204, 112, 0.6);
-    transform: scale(1.04);
+     transform: scale(1.04);
   }
 }
 
 .login-btn-unique {
-  margin: 24px auto 0 auto;       /* Push it slightly lower and center it */
+  margin: 24px auto 0 auto;       
   display: block;
-  padding: 14px 22px;             /* Balanced height and width */
+  padding: 14px 22px;            
   background: var(--accent-gradient);
   color: white;
   font-size: 1rem;
