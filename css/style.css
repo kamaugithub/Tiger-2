@@ -698,7 +698,7 @@ transition: transform 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap; /* prevent wrapping so items stay on one line */
+  flex-wrap: nowrap; 
   gap: 40px; 
 }
 
