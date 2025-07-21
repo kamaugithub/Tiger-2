@@ -405,7 +405,7 @@ user-select: none;
   }
 }
 
-/* ================= ABOUT SECTION ================= */
+/* ===== ABOUT SECTION ===== */
 .about-container-card {
   background-color: white;
   border-radius: 16px;
@@ -446,7 +446,7 @@ user-select: none;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* ================= FEATURES SECTION ================= */
+/* =============== FEATURES SECTION =============== */
 .section-title {
   text-align: center;
   font-size: 2rem;
