@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('menu-toggle');
   const nav = document.getElementById('nav');
 
-  //  Check if toggle and nav exist before adding listeners
+  // Navigation toggle for mobile UX
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
       const isExpanded = nav.classList.toggle('active');
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
       nav.setAttribute('aria-hidden', !isExpanded);
     });
 
-    // Hide menu on link click (mobile UX)
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         nav.classList.remove('active');
@@ -20,13 +19,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  //  Success popup on login submit
+  // Simulated email (later to be replaced with user data from database)
+  const userEmail = "mathew@example.com"; 
+  const displayName = userEmail.split("@")[0];
+
+  // Inject user's name into welcome section
+  const nameEl = document.getElementById("welcome-name");
+  if (nameEl) nameEl.textContent = displayName;
+
+  // Inject today's date into dashboard
+  const dateEl = document.getElementById("current-date");
+  if (dateEl) {
+    dateEl.textContent = new Date().toLocaleDateString("en-KE", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+  }
+
+  // Login success popup simulation
   const loginForm = document.querySelector('.login-section form');
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Create and style the popup
       const popup = document.createElement('div');
       popup.textContent = 'Login successful! Welcome!';
       popup.style.position = 'fixed';
@@ -44,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.body.appendChild(popup);
 
-      // Remove popup and redirect after 2 seconds
       setTimeout(() => {
         popup.remove();
         window.location.href = 'dashboard.html';
@@ -52,8 +67,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-
-
-
-
