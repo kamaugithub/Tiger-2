@@ -25,11 +25,15 @@
 }
 .sidebar .nav-link {
   color: white !important;
-  border-bottom: 1px solid #444;
-  text-decoration: none;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-bottom: 1px solid #444;
 }
-
 .sidebar .nav-link:hover {
   background-color: #ff4500;
   color: white !important;
@@ -89,7 +93,7 @@
   </style>
 </head>
 <body>
- <header class="py-3 bg-white border-bottom text-center">
+ <header class="py-3 bg-white text-center">
     <div class="logo">
       <span class="logo-black">TIGER</span>
       <span class="logo-red">POS</span>
