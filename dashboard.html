@@ -14,22 +14,29 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-    .sidebar {
-      min-height: 100vh;
-      background-color: #212529;
-      color: white;
-      border-right: 2px solid #ff4500;
-    }
-    .sidebar .nav-link {
-      color: white;
-      border-bottom: 1px solid #444;
-    }
-    .sidebar .nav-link:hover {
-      background-color: #ff4500;
-      color: white;
-    }
+   .sidebar {
+  min-height: 100vh;
+  background-color: #212529;
+  color: white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.sidebar .nav-link {
+  color: white !important;
+  border-bottom: 1px solid #444;
+  text-decoration: none;
+  text-overflow: ellipsis;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #ff4500;
+  color: white !important;
+}
+
     .main-content {
-      padding: 20px;
+      padding: 10px;
     }
     @media (max-width: 768px) {
       .sidebar {
@@ -208,7 +215,7 @@
   </div>
 
   <div class="col-md-4 col-sm-12 text-end">
-    <button class="btn btn-success px-5 py-2 fw-bold">Complete Sale</button>
+    <button class="btn btn-success px-3 py-2 fw-bold">Complete Sale</button>
   </div>
 </div>
 
