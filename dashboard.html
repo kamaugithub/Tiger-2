@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,8 +7,6 @@
 
   <!-- Bootstrap core CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Bootstrap Icons CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
@@ -18,20 +17,11 @@
     .page-card-container {
       min-height: 100vh;
       background-color: #f8f9fa;
-      border: 1px solid #dee2e6;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
       padding: 20px;
     }
     .card {
       background-color: #f9fbfc;
       border-color: #e0e0e0;
-    }
-    .page-wrapper {
-      background-color: #f8f9fa;
-      border: 1px solid #dee2e6;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
     }
     .sidebar {
       margin-top: 20px;
@@ -45,62 +35,22 @@
     }
     .sidebar .nav-link {
       color: white !important;
-      background-color: transparent;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      border-bottom: 1px solid #444;
       display: flex;
       align-items: center;
-      text-decoration: none;
-      border-bottom: 1px solid #444;
-      transition: background-color 0.3s ease, color 0.3s ease;
       justify-content: flex-start;
       gap: 10px;
+      transition: background 0.3s;
     }
     .sidebar .nav-link:hover {
       background-color: #ff4500;
-      color: white !important;
     }
-    .main-content {
-      padding: 10px;
-    }
-    @media (max-width: 500px) {
-      .sidebar {
-        max-width: 100%;
-        padding: 10px;
-      }
-      .sidebar .nav-link {
-        font-size: 0.95rem;
-      }
-    }
-    .home-icon {
-      font-size: 2rem;
-      color: var(--primary-orange);
-      text-decoration: none;
-      margin-right: 50px;
-    }
-    .home-icon:hover {
-      color: #ff5722;
-      background-color: rgba(255, 87, 34, 0.1);
-    }
-   .sidebar-label {
-  color: #f4500f;
-  background-color: transparent;
-  cursor: default;
-  opacity: 1;
-  padding: 8px 12px;
-  border-bottom: none;
-  display: block;
-  white-space: nowrap;
-  text-transform: uppercase;
-  font-weight: 500;
-  text-align: center;       
-  width: 100%;              
-}
-
-    .sidebar-label:hover {
-      background-color: transparent;
-      color: white;
+    .sidebar-label {
+      color: #f4500f;
+      text-align: center;
+      font-weight: 500;
+      padding: 8px 0;
+      text-transform: uppercase;
     }
     .logo {
       font-size: 2.6rem;
@@ -121,55 +71,33 @@
       text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
     }
     @keyframes tigerBlink {
-      0%, 100% {
-        color: black;
-        text-shadow: 0 0 3px rgba(249, 115, 22, 0.3);
-      }
-      50% {
-        color: #ff4500;
-        text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-      }
+      0%, 100% { color: black; }
+      50% { color: #ff4500; }
     }
     @keyframes posBlink {
-      0%, 100% {
-        color: #ff4500;
-        text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
-      }
-      50% {
-        color: black;
-        text-shadow: 0 0 3px rgba(249, 115, 22, 0.3);
-      }
-    }
-    table thead th {
-      background-color: #f8f9fa;
-      color: black;
-      font-weight: bold;
-    }
-    table tbody tr td {
-      height: 48px;
-      vertical-align: middle;
+      0%, 100% { color: #ff4500; }
+      50% { color: black; }
     }
     @media (max-width: 768px) {
-      table tbody tr td {
-        height: auto;
+      .sidebar {
+        max-width: 100%;
+        margin-bottom: 20px;
       }
     }
   </style>
 </head>
 
-<!-- Corrected Body -->
 <body>
   <div class="page-card-container">
+    <!-- Header -->
     <header class="py-3 bg-white d-flex justify-content-between align-items-center px-4">
       <div class="logo">
         <span class="logo-black">TIGER</span>
         <span class="logo-red">POS</span>
       </div>
-      <div>
-        <a href="index.html" class="home-icon" title="Go to Home">
-          <i class="bi bi-house-fill"></i>
-        </a>
-      </div>
+      <a href="index.html" class="home-icon fs-3 text-dark" title="Go to Home">
+        <i class="bi bi-house-fill"></i>
+      </a>
     </header>
 
     <div class="container-fluid">
@@ -177,105 +105,117 @@
         <!-- Sidebar -->
         <div class="col-12 col-md-3 col-lg-2">
           <nav class="sidebar py-4">
+            <div class="sidebar-label">Actions</div>
             <ul class="nav flex-column">
-              <li class="nav-item">
-                <div class="sidebar-label fw-bold text-uppercase">Actions</div>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-search me-2"></i> Search</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-truck me-2"></i> Suppliers</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-people-fill me-2"></i> Customers</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-tags me-2"></i> Categories</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-box-seam me-2"></i> Products</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-arrow-repeat me-2"></i> Stocking</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-calendar2-day me-2"></i> Today's Summary</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-credit-card-2-back me-2"></i> Debts</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-clipboard-data me-2"></i> Reports</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-grid-3x3-gap-fill me-2"></i> Units</a></li>
-              <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-exclamation-circle me-2"></i> Record Issues</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Suppliers</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Customers</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Stocking</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Today's Summary</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Debts</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Units</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Record Issues</a></li>
             </ul>
           </nav>
         </div>
 
         <!-- Main Content -->
         <div class="col-12 col-md-9 col-lg-10">
-          <main class="main-content pt-5">
+          <main class="main-content pt-4">
+            <!-- Always visible welcome card -->
             <div class="card mb-4">
               <div class="card-body">
-                <h5 class="card-title">Welcome, <span id="welcome-name"></span></h5>
+                <h5 class="card-title">Welcome, <span id="welcome-name">User</span></h5>
                 <p class="card-text">Branch: Nairobi | Date: <span id="current-date"></span></p>
               </div>
             </div>
 
-            <div class="row g-3 mb-4">
-              <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Select Customer">
+            <!-- Default POS content -->
+            <div id="default-content">
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Select Customer">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Search Product by SKU">
+                </div>
               </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Search Product by SKU">
-              </div>
-            </div>
 
-            <div class="card mb-3 border-light shadow-sm">
-              <div class="card-body">
-                <div class="table-responsive mb-4">
-                  <table class="table table-bordered">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Product</th>
-                        <th>Qty</th>
-                        <th>Unit</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                        <th>Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Sample Item</td>
-                        <td>1</td>
-                        <td>pcs</td>
-                        <td>Ksh 500</td>
-                        <td>Ksh 500</td>
-                        <td><button class="btn btn-sm btn-danger">X</button></td>
-                      </tr>
-                      <tr>
-                        <td colspan="6"></td>
-                      </tr>
-                    </tbody>
-                  </table>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Product</th>
+                          <th>Qty</th>
+                          <th>Unit</th>
+                          <th>Price</th>
+                          <th>Total</th>
+                          <th>Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Sample Item</td>
+                          <td>1</td>
+                          <td>pcs</td>
+                          <td>Ksh 500</td>
+                          <td>Ksh 500</td>
+                          <td><button class="btn btn-sm btn-danger">X</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row align-items-end g-3 mb-4">
+                    <div class="col-md-2 col-sm-6">
+                      <label class="form-label">Payment Method</label>
+                      <div class="col-md-2 col-sm-6">
+  <label for="payment-method" class="form-label">Payment Method</label>
+  <select id="payment-method" class="form-select">
+    <option selected disabled>Select</option>
+    <option value="cash">Cash</option>
+    <option value="mpesa">M-Pesa</option>
+    <option value="card">Credit</option>
+  </select>
+</div>
+
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                      <label class="form-label">Amount Paid</label>
+                      <input type="number" class="form-control" placeholder="Enter amount">
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                      <label class="form-label">Balance</label>
+                      <input type="text" class="form-control" placeholder="Ksh 0.00" disabled>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                      <label class="form-label">Total</label>
+                      <input type="text" class="form-control fw-bold text-success" placeholder="Ksh 500" disabled>
+                    </div>
+                    <div class="col-md-4 col-sm-12 text-end">
+                      <button class="btn btn-success px-3 py-2 fw-bold">Complete Sale</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="card mb-3 border-light shadow-sm">
-              <div class="card-body">
-                <div class="row align-items-end g-3 mb-4">
-                  <div class="col-md-2 col-sm-6">
-                    <label for="payment-method" class="form-label">Payment Method</label>
-                    <select id="payment-method" class="form-select" title="Select Payment Method">
-                      <option selected disabled>Select</option>
-                      <option value="cash">Cash</option>
-                      <option value="mpesa">M-Pesa</option>
-                      <option value="card">Credit</option>
-                      <option value="suspend">Suspend</option>
-                      <option value="multiple">Multiple payments</option>
-                    </select>
-                  </div>
-                  <div class="col-md-2 col-sm-6">
-                    <label for="amount-paid" class="form-label">Amount Paid</label>
-                    <input type="number" id="amount-paid" class="form-control" placeholder="Enter amount" title="Amount Paid">
-                  </div>
-                  <div class="col-md-2 col-sm-6">
-                    <label for="balance" class="form-label">Balance</label>
-                    <input type="text" id="balance" class="form-control" placeholder="Ksh 0.00" title="Balance" disabled>
-                  </div>
-                  <div class="col-md-2 col-sm-6">
-                    <label for="total-display" class="form-label">Total</label>
-                    <input type="text" id="total-display" class="form-control fw-bold text-success" placeholder="Ksh 500" title="Total" disabled>
-                  </div>
-                  <div class="col-md-4 col-sm-12 text-end">
-                    <button class="btn btn-success px-3 py-2 fw-bold">Complete Sale</button>
-                  </div>
+            <!-- Dynamic Content -->
+            <div id="dynamic-content" class="d-none">
+              <div class="card mb-3 border-primary">
+                <div class="card-body">
+                  <button class="btn btn-sm btn-outline-secondary mb-3" onclick="resetView()">← Back</button>
+                  <h5 class="card-title" id="dynamic-title">Section</h5>
+                  <p class="card-text">This is the dynamic content area for the selected action.</p>
                 </div>
               </div>
             </div>
@@ -285,8 +225,31 @@
     </div>
   </div>
 
+  <!-- JavaScript -->
   <script>
     document.getElementById("current-date").textContent = new Date().toLocaleDateString();
+
+    const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
+    const dynamicContent = document.getElementById("dynamic-content");
+    const dynamicTitle = document.getElementById("dynamic-title");
+    const defaultContent = document.getElementById("default-content");
+
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const section = link.textContent.trim();
+        defaultContent.classList.add("d-none");
+        dynamicTitle.textContent = section;
+        dynamicContent.classList.remove("d-none");
+        dynamicContent.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    function resetView() {
+      dynamicContent.classList.add("d-none");
+      defaultContent.classList.remove("d-none");
+    }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
