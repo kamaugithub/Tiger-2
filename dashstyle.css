@@ -94,7 +94,7 @@ body {
 .main-layout {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
 }
 
 .sidebar {
@@ -220,6 +220,14 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
+.table-spacer {
+  height: 100px; 
+}
+
+.table-container {
+  margin-bottom: 60px; 
+}
+
 
 th, td {
   border: 1px solid #ccc;
