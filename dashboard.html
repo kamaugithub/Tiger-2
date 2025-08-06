@@ -4,318 +4,142 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TIGER POS | Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="dashstyle.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Bootstrap core CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-  <style>
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    .page-card-container {
-      min-height: 100vh;
-      background-color: #f8f9fa;
-      padding: 20px;
-    }
-    .card {
-      background-color: #f9fbfc;
-      border-color: #e0e0e0;
-    }
-    .sidebar {
-      margin-top: 20px;
-      min-height: 100vh;
-      background-color: #212529;
-      color: white;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 250px;
-      overflow-x: hidden;
-    }
-    .sidebar .nav-link {
-      color: white !important;
-      border-bottom: 1px solid #444;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 10px;
-      transition: background 0.3s;
-    }
-    .sidebar .nav-link:hover {
-      background-color: #ff4500;
-    }
-    .sidebar-label {
-      color: #f4500f;
-      text-align: center;
-      font-weight: 500;
-      padding: 8px 0;
-      text-transform: uppercase;
-    }
-    .logo {
-      font-size: 2.6rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      display: flex;
-      gap: 12px;
-      margin-left: 30px;
-    }
-    .logo-black {
-      animation: tigerBlink 3s infinite ease-in-out;
-      color: black;
-      text-shadow: 0 0 3px rgba(249, 115, 22, 0.3);
-    }
-    .logo-red {
-      animation: posBlink 3s infinite ease-in-out;
-      color: #ff4500;
-      text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
-    }
-    @keyframes tigerBlink {
-      0%, 100% { color: black; }
-      50% { color: #ff4500; }
-    }
-    @keyframes posBlink {
-      0%, 100% { color: #ff4500; }
-      50% { color: black; }
-    }
-    @media (max-width: 768px) {
-      .sidebar {
-        max-width: 100%;
-        margin-bottom: 20px;
-      }
-    }
-  </style>
 </head>
 
 <body>
   <div class="page-card-container">
-    <!-- Header -->
-    <header class="py-3 bg-white d-flex justify-content-between align-items-center px-4">
+    <header class="header">
       <div class="logo">
         <span class="logo-black">TIGER</span>
         <span class="logo-red">POS</span>
       </div>
-      <a href="index.html" class="home-icon fs-3 text-dark" title="Go to Home">
-        <i class="bi bi-house-fill"></i>
-      </a>
+      <a href="index.html" class="home-icon" title="Go to Home">🏠</a>
     </header>
 
-    <div class="container-fluid">
-      <div class="row">
-        <!-- Sidebar -->
-        <div class="col-12 col-md-3 col-lg-2">
-          <nav class="sidebar py-4">
-            <div class="sidebar-label">Actions</div>
-            <ul class="nav flex-column">
-              <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Suppliers</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Customers</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Stocking</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Today's Summary</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Debts</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Units</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Record Issues</a></li>
-            </ul>
-          </nav>
-        </div>
+    <div class="main-layout">
+      <nav class="sidebar" id="nav">
+        <div class="sidebar-label">Actions</div>
+        <ul class="nav-links">
+  <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
+  <li><a href="#"><i class="fas fa-truck"></i> Suppliers</a></li>
+  <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
+  <li><a href="#"><i class="fas fa-tags"></i> Categories</a></li>
+  <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
+  <li><a href="#"><i class="fas fa-warehouse"></i> Stocking</a></li>
+  <li><a href="#"><i class="fas fa-calendar-day"></i> Today's Summary</a></li>
+  <li><a href="#"><i class="fas fa-money-bill-wave"></i> Debts</a></li>
+  <li><a href="#"><i class="fas fa-chart-line"></i> Reports</a></li>
+  <li><a href="#"><i class="fas fa-balance-scale"></i> Units</a></li>
+  <li><a href="#"><i class="fas fa-exclamation-circle"></i> Record Issues</a></li>
+</ul>
 
-        <!-- Main Content -->
-        <div class="col-12 col-md-9 col-lg-10">
-          <main class="main-content pt-4">
-            <!-- Always visible welcome card -->
-            <div class="card mb-4">
-              <div class="card-body">
-                <h5 class="card-title">Welcome, <span id="welcome-name">User</span></h5>
-                <p class="card-text">Branch: Nairobi | Date: <span id="current-date"></span></p>
-              </div>
-            </div>
+      </nav>
 
-            <!-- Default POS content -->
-            <div id="default-content">
-              <div class="row g-3 mb-4">
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Select Customer">
-                </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Search Product by SKU">
-                </div>
-              </div>
+      <main class="main-content">
+       <div class="welcome-card">
+  <div class="welcome-message">Welcome, User</div>
+  <div class="info-row">
+    <div class="branch">Branch: Nairobi</div>
+    <div class="date">Date: August 6, 2025</div>
+  </div>
+</div>
 
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="table-responsive mb-4">
-                    <table class="table table-bordered">
-                      <thead class="table-light">
-                        <tr>
-                          <th>Product</th>
-                          <th>Qty</th>
-                          <th>Unit</th>
-                          <th>Price</th>
-                          <th>Total</th>
-                          <th>Remove</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Sample Item</td>
-                          <td>1</td>
-                          <td>pcs</td>
-                          <td>Ksh 500</td>
-                          <td>Ksh 500</td>
-                          <td><button class="btn btn-sm btn-danger">X</button></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
 
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row align-items-end g-3 mb-4">
-                    <div class="col-md-2 col-sm-6">
-                      <label class="form-label">Payment Method</label>
-                      <div class="col-md-2 col-sm-6">
-  <label for="payment-method" class="form-label">Payment Method</label>
-  <select id="payment-method" class="form-select">
-    <option selected disabled>Select</option>
-    <option value="cash">Cash</option>
-    <option value="mpesa">M-Pesa</option>
-    <option value="card">Credit</option>
+        <section id="default-content">
+          <div class="form-row">
+            <input type="text" placeholder="Select Customer" />
+            <input type="text" placeholder="Search Product by SKU" />
+          </div>
+
+          <div class="card">
+            <table>
+              <thead>
+                <tr><th>Product</th><th>Qty</th><th>Unit</th><th>Price</th><th>Total</th><th>Remove</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Sample Item</td><td>1</td><td>pcs</td><td>Ksh 500</td><td>Ksh 500</td><td><button>X</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+  <div class="form-row">
+    <div class="form-control-group">
+      <label for="payment-method">Payment Method</label>
+      <select id="payment-method">
+        <option disabled selected>Select Payment</option>
+        <option value="cash">Cash</option>
+        <option value="mpesa">M-Pesa</option>
+        <option value="card">Credit</option>
+      </select>
+    </div>
+
+    <div class="form-control-group">
+      <label for="amount-paid">Amount Paid</label>
+      <input type="number" id="amount-paid" placeholder="Amount Paid" />
+    </div>
+
+    <div class="form-control-group">
+      <label for="balance">Balance</label>
+      <input type="text" id="balance" placeholder="Ksh 0.00" disabled />
+    </div>
+
+    <div class="form-control-group">
+      <label for="total">Total</label>
+      <input type="text" id="total" placeholder="Ksh 500" disabled />
+    </div>
+
+    <div class="form-control-group">
+      <button type="button">Complete Sale</button>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+        <section id="dynamic-content" class="hidden">
+          <button onclick="resetView()">← Back</button>
+          <h5 id="dynamic-title">Manage Stock Issues</h5>
+
+          <ul class="tab-list">
+            <li><button class="tab active" onclick="showTab('view')">View Issues</button></li>
+            <li><button class="tab" onclick="showTab('record')">Record Issue</button></li>
+          </ul>
+
+          <div class="tab-content view">
+            <table>
+              <thead>
+                <tr><th>Stock ID</th><th>Product Variation</th><th>Supplier</th><th>Qty</th><th>Notes</th><th>Date</th><th>Actions</th></tr>
+              </thead>
+              <tbody><tr><td colspan="7" class="text-muted">No issues recorded yet.</td></tr></tbody>
+            </table>
+          </div>
+
+          <div class="tab-content record hidden">
+            <form>
+              <div class="form-control-group">
+  <label for="variation">Product Variation</label>
+  <select id="variation" name="variation" required>
+    <option value="" disabled selected>-- Select Product Variation --</option>
+    <!-- Add actual options dynamically or statically below -->
+    <option value="variation1">Variation 1</option>
+    <option value="variation2">Variation 2</option>
   </select>
 </div>
 
-                    </div>
-                    <div class="col-md-2 col-sm-6">
-                      <label class="form-label">Amount Paid</label>
-                      <input type="number" class="form-control" placeholder="Enter amount">
-                    </div>
-                    <div class="col-md-2 col-sm-6">
-                      <label class="form-label">Balance</label>
-                      <input type="text" class="form-control" placeholder="Ksh 0.00" disabled>
-                    </div>
-                    <div class="col-md-2 col-sm-6">
-                      <label class="form-label">Total</label>
-                      <input type="text" class="form-control fw-bold text-success" placeholder="Ksh 500" disabled>
-                    </div>
-                    <div class="col-md-4 col-sm-12 text-end">
-                      <button class="btn btn-success px-3 py-2 fw-bold">Complete Sale</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dynamic Content -->
-            <div id="dynamic-content" class="d-none">
-              <div class="card mb-3 border-primary">
-                <div class="card-body">
-                  <button class="btn btn-sm btn-outline-secondary mb-3" onclick="resetView()">← Back</button>
-                  <h5 class="card-title" id="dynamic-title">Section</h5>
-                  <div class="card border-0 shadow-sm mb-4">
-  <div class="card-body">
-    <h5 class="card-title text-primary fw-bold">Manage Stock Issues</h5>
-
-    <!-- Tabs -->
-    <ul class="nav nav-tabs mb-4" id="issueTabs" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="view-tab" data-bs-toggle="tab" data-bs-target="#view-issues" type="button" role="tab">View Issues</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="record-tab" data-bs-toggle="tab" data-bs-target="#record-issue" type="button" role="tab">Record Issue</button>
-      </li>
-    </ul>
-
-    <!-- Tab Content -->
-    <div class="tab-content" id="issueTabContent">
-      <!-- View Issues -->
-      <div class="tab-pane fade show active" id="view-issues" role="tabpanel">
-        <div class="table-responsive">
-          <table class="table table-bordered align-middle">
-            <thead class="table-light">
-              <tr>
-                <th>Stock ID</th>
-                <th>Product Variation</th>
-                <th>Supplier</th>
-                <th>Quantity</th>
-                <th>Notes</th>
-                <th>Date Raised</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colspan="7" class="text-center text-muted">No issues recorded yet.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Record Issue -->
-      <div class="tab-pane fade" id="record-issue" role="tabpanel">
-        <form class="mt-3">
-          <div class="mb-3">
-            <label for="variation" class="form-label">Select Product Variation</label>
-            <select id="variation" class="form-select">
-              <option selected>-- Select Product Variation --</option>
-            </select>
+              <input type="number" placeholder="Enter quantity with issues" />
+              <textarea placeholder="Describe the issue..."></textarea>
+              <button type="submit">Record Issue</button>
+            </form>
           </div>
-          <div class="mb-3">
-            <label for="quantity" class="form-label">Quantity with Issues</label>
-            <input type="number" id="quantity" class="form-control" placeholder="Enter quantity with issues">
-          </div>
-          <div class="mb-3">
-            <label for="description" class="form-label">Issue Description (Optional)</label>
-            <textarea id="description" rows="3" class="form-control" placeholder="Describe the issue..."></textarea>
-          </div>
-          <div class="text-end">
-            <button type="submit" class="btn btn-primary fw-bold">Record Issue</button>
-          </div>
-        </form>
-      </div>
+        </section>
+      </main>
     </div>
   </div>
-</div>
-
-                  <p class="card-text">This is the dynamic content area for the selected action.</p>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript -->
-  <script>
-    document.getElementById("current-date").textContent = new Date().toLocaleDateString();
-
-    const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
-    const dynamicContent = document.getElementById("dynamic-content");
-    const dynamicTitle = document.getElementById("dynamic-title");
-    const defaultContent = document.getElementById("default-content");
-
-    sidebarLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const section = link.textContent.trim();
-        defaultContent.classList.add("d-none");
-        dynamicTitle.textContent = section;
-        dynamicContent.classList.remove("d-none");
-        dynamicContent.scrollIntoView({ behavior: "smooth" });
-      });
-    });
-
-    function resetView() {
-      dynamicContent.classList.add("d-none");
-      defaultContent.classList.remove("d-none");
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,292 @@
+:root {
+  --primary-orange: #f97316; 
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+}
+
+.page-card-container { padding: 30px; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+/* Modified Logo Styling */
+.logo {
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  display: flex;
+  gap: 12px;
+}
+
+.logo-black {
+  animation: tigerBlink 3s infinite ease-in-out;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: black;
+  text-shadow: 0 0 3px rgba(249, 115, 22, 0.3);
+}
+
+.logo-red {
+  animation: posBlink 3s infinite ease-in-out;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--primary-orange);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes tigerBlink {
+  0%, 100% {
+    color: black;
+    text-shadow: 0 0 3px rgba(249, 115, 22, 0.3);
+  }
+  50% {
+    color: var(--primary-orange);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes posBlink {
+  0%, 100% {
+    color: var(--primary-orange);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    color: black;
+    text-shadow: 0 0 3px rgba(249, 115, 22, 0.3);
+  }
+}
+
+/* New home icon styling */
+.home-icon {
+  margin-right: 50px; 
+  font-size: 1.8rem;
+  color: var(--primary-orange);
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+
+.home-icon:hover,
+.home-icon:focus {
+  color: #f97316; 
+  background-color:  #f97316; 
+  box-shadow: 0 0 6px rgba(255, 255, 0, 0.5); 
+  outline: none;
+}
+
+
+/* Sidebar  */
+
+.main-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.sidebar {
+  background: #212529;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  min-width: 200px;
+  min-height: 80vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+   overflow-y: auto;
+}
+
+
+.sidebar-label {
+  color: #f97316;
+  font-weight: medium;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-align: center; 
+  font-size: 1.0rem;
+}
+
+
+.nav-links { list-style: none; padding: 0; }
+
+.nav-links a {
+  display: block;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+.nav-links li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.nav-links a:hover {
+  background-color: #ff4500;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+}
+
+.welcome-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.welcome-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-orange);
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.branch {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.date {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input, select, textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+button {
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: darkgreen;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.tab-list {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tab {
+  background: #ddd;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #bbb;
+}
+
+.tab-content.hidden {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Style group for form controls */
+.form-control-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: 1rem;
+}
+
+.form-control-group label {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.form-control-group input,
+.form-control-group select,
+.form-control-group textarea {
+  padding: 8px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Row structure for grouping form items side by side */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
