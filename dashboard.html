@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TIGER POS | Dashboard</title>
-  <link rel="stylesheet" href="styles.css" />
+  
   <link rel="stylesheet" href="dashstyle.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 
 <body>
@@ -24,30 +23,29 @@
       <nav class="sidebar" id="nav">
         <div class="sidebar-label">Actions</div>
         <ul class="nav-links">
-  <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
-  <li><a href="#"><i class="fas fa-truck"></i> Suppliers</a></li>
-  <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
-  <li><a href="#"><i class="fas fa-tags"></i> Categories</a></li>
-  <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
-  <li><a href="#"><i class="fas fa-warehouse"></i> Stocking</a></li>
-  <li><a href="#"><i class="fas fa-calendar-day"></i> Today's Summary</a></li>
-  <li><a href="#"><i class="fas fa-money-bill-wave"></i> Debts</a></li>
-  <li><a href="#"><i class="fas fa-chart-line"></i> Reports</a></li>
-  <li><a href="#"><i class="fas fa-balance-scale"></i> Units</a></li>
-  <li><a href="#"><i class="fas fa-exclamation-circle"></i> Record Issues</a></li>
-</ul>
+          <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
+          <li><a href="#"><i class="fas fa-truck"></i> Suppliers</a></li>
+          <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
+          <li><a href="#"><i class="fas fa-tags"></i> Categories</a></li>
+          <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
+          <li><a href="#"><i class="fas fa-warehouse"></i> Stocking</a></li>
+          <li><a href="#"><i class="fas fa-calendar-day"></i> Today's Summary</a></li>
+          <li><a href="#"><i class="fas fa-money-bill-wave"></i> Debts</a></li>
+          <li><a href="#"><i class="fas fa-chart-line"></i> Reports</a></li>
+<li><a href="#" data-target="units-card"><i class="fas fa-balance-scale"></i> Units</a></li>
+          <li><a href="#" data-target="dynamic-content"><i class="fas fa-exclamation-circle"></i> Record Issues</a></li>
 
+        </ul>
       </nav>
 
       <main class="main-content">
-       <div class="welcome-card">
-  <div class="welcome-message">Welcome, User</div>
-  <div class="info-row">
-    <div class="branch">Branch: Nairobi</div>
-    <div class="date">Date: August 6, 2025.</div>
-  </div>
-</div>
-
+        <div class="welcome-card">
+          <div class="welcome-message">Welcome, <span id="welcome-name">User</span></div>
+          <div class="info-row">
+            <div class="branch">Branch: Nairobi</div>
+            <div class="date">Date: <span id="current-date"></span></div>
+          </div>
+        </div>
 
         <section id="default-content">
           <div class="form-row">
@@ -60,49 +58,47 @@
               <thead>
                 <tr><th>Product</th><th>Qty</th><th>Unit</th><th>Price</th><th>Total</th><th>Remove</th></tr>
               </thead>
-             
-            </table><div class="table-spacer"></div>
-
+            </table>
+            <div class="table-spacer"></div>
           </div>
 
           <div class="card">
-  <div class="form-row">
-    <div class="form-control-group">
-      <label for="payment-method">Payment Method</label>
-      <select id="payment-method">
-        <option disabled selected>Select Payment</option>
-        <option value="cash">Cash</option>
-        <option value="mpesa">M-Pesa</option>
-        <option value="card">Credit</option>
-        <option value="card">Multiple Payments</option>
-        <option value="card">Suspend</option>
-      </select>
-    </div>
+            <div class="form-row">
+              <div class="form-control-group">
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method">
+                  <option disabled selected>Select Payment</option>
+                  <option value="cash">Cash</option>
+                  <option value="mpesa">M-Pesa</option>
+                  <option value="card">Credit</option>
+                  <option value="multiple">Multiple Payments</option>
+                  <option value="suspend">Suspend</option>
+                </select>
+              </div>
 
-    <div class="form-control-group">
-      <label for="amount-paid">Amount Paid</label>
-      <input type="number" id="amount-paid" placeholder="Amount Paid" />
-    </div>
+              <div class="form-control-group">
+                <label for="amount-paid">Amount Paid</label>
+                <input type="number" id="amount-paid" placeholder="Amount Paid" />
+              </div>
 
-    <div class="form-control-group">
-      <label for="balance">Balance</label>
-      <input type="text" id="balance" placeholder="Ksh 0.00" disabled />
-    </div>
+              <div class="form-control-group">
+                <label for="balance">Balance</label>
+                <input type="text" id="balance" placeholder="Ksh 0.00" disabled />
+              </div>
 
-    <div class="form-control-group">
-      <label for="total">Total</label>
-      <input type="text" id="total" placeholder="Ksh 500" disabled />
-    </div>
+              <div class="form-control-group">
+                <label for="total">Total</label>
+                <input type="text" id="total" placeholder="Ksh 500" disabled />
+              </div>
+            </div>
 
-    <div class="form-control-group">
-      <button type="button">Complete Sale</button>
-    </div>
-  </div>
-</div>
-
+            <div class="button-row">
+              <button type="button">Complete Sale</button>
+            </div>
+          </div>
         </section>
 
-        <section id="dynamic-content" class="hidden">
+        <section id="dynamic-content" class="hidden slide-in-card">
           <button onclick="resetView()">← Back</button>
           <h5 id="dynamic-title">Manage Stock Issues</h5>
 
@@ -123,18 +119,17 @@
           <div class="tab-content record hidden">
             <form>
               <div class="form-control-group">
-  <label for="variation">Product Variation</label>
-  <select id="variation" name="variation" required>
-    <option value="" disabled selected>-- Select Product Variation --</option>
-    <!-- Add actual options dynamically or statically below -->
-    <option value="variation1">Variation 1</option>
-    <option value="variation2">Variation 2</option>
-  </select>
-</div>
+                <label for="variation">Product Variation</label>
+                <select id="variation" name="variation" required>
+                  <option value="" disabled selected>-- Select Product Variation --</option>
+                  <option value="variation1">Variation 1</option>
+                  <option value="variation2">Variation 2</option>
+                </select>
+              </div>
 
               <input type="number" placeholder="Enter quantity with issues" />
               <textarea placeholder="Describe the issue..."></textarea>
-              <button type="submit">Record Issue</button>
+              <button type="submit" style="background: #007bff;">Record Issue</button>
             </form>
           </div>
         </section>

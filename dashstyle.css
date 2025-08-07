@@ -16,7 +16,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background: white;
-  padding: 20px;
+  padding: 15px;
   margin-bottom: 20px;
   border-radius: 15px;
 }
@@ -206,7 +206,7 @@ input, select, textarea {
 button {
   padding: 10px 20px;
   background: green;
-  color: white;
+  color: rgb(245, 243, 243);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -221,7 +221,7 @@ table {
   border-collapse: collapse;
 }
 .table-spacer {
-  height: 100px; 
+  height: 80px; 
 }
 
 .table-container {
@@ -297,4 +297,135 @@ th, td {
   .form-row {
     flex-direction: column;
   }
+}
+/* Complete Sale button */
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 130px; 
+  margin-top: 20px;
+}
+.button-row button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button-row button:hover {
+  background:rgb(10, 150, 10);
+}
+
+@media (max-width: 768px) {
+  .button-row {
+    justify-content: center;
+    padding-right: 0;
+  }
+}
+.hidden {
+  display: none !important;
+}
+
+.slide-in-card {
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* Container for the form */
+.tab-content.record form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: calc(100% - 300px); /* Adjusted for sidebar */
+  margin-left: 0;
+  margin-right: 0;
+  padding: 20px;
+  gap: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Form fields */
+.tab-content.record form select,
+.tab-content.record form input[type="number"],
+.tab-content.record form textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: #fdfdfd;
+  color: #333;
+}
+
+/* Placeholder styling */
+.tab-content.record form ::placeholder {
+  color: #999;
+}
+
+/* Blue button centered below */
+.tab-content.record form button {
+  align-self: center;
+  padding: 10px 24px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tab-content.record form button:hover {
+  background-color: #0056b3;
+}
+
+/* Tab buttons */
+.tab-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+
+
+.tab-list .tab {
+  font-weight: bold;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  color: #333;
+}
+
+.tab-list .tab.active {
+  background-color: #ff6600; /* TIGER POS orange */
+  color: white;
+  border-color: #ff6600;
+}
+
+.tab-list .tab:hover {
+  background-color: #ffae42;
+  color: black;
 }
