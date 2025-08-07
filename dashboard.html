@@ -23,7 +23,7 @@
       <nav class="sidebar" id="nav">
         <div class="sidebar-label">Actions</div>
         <ul class="nav-links">
-          <li><a href="#"><i class="fas fa-search"></i> Search</a></li>
+          <li><a href="#" data-target="search-card"><i class="fas fa-search"></i> Search</a></li>
           <li><a href="#"><i class="fas fa-truck"></i> Suppliers</a></li>
           <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
           <li><a href="#"><i class="fas fa-tags"></i> Categories</a></li>
@@ -98,6 +98,102 @@
           </div>
         </section>
 
+        <!-- Search Section -->
+        <section id="search-card" class="hidden slide-in-card">
+          <div class="search-wrapper">
+            <div class="main-card">
+              <div class="inner-card">
+                <h2>Search Sales</h2>
+                <input type="text" placeholder="Search by product name or variation description" class="search-input" />
+
+                <div class="summary-boxes">
+                  <div class="summary-box">Overall Total Sales: <strong>Kshs 0.00</strong></div>
+                  <div class="summary-box">Total Credit Sales: <strong>Kshs 0.00</strong></div>
+                  <div class="summary-box">Total Complete Sales: <strong>Kshs 0.00</strong></div>
+                </div>
+              </div>
+
+              <table class="sales-table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Transaction ID</th>
+                    <th>Sale Status</th>
+                    <th>Sold By</th>
+                    <th>Customer Name</th>
+                    <th>Product Name</th>
+                    <th>Variation</th>
+                    <th>Units</th>
+                    <th>Quantity</th>
+                    <th>Selling Price</th>
+                    <th>Total Spent</th>
+                    <th>Sale Date</th>
+                  </tr>
+                </thead>
+                <tbody id="sales-table-body"></tbody>
+              </table>
+
+              <button class="sku-button" onclick="document.getElementById('sku-card').classList.remove('hidden')">Search SKU</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SKU Section -->
+        <section id="sku-card" class="hidden slide-in-card">
+          <!-- SKU content here -->
+        </section>
+
+        <!-- Manage Units Section -->
+        <section id="units-card" class="hidden slide-in-card">
+          <button onclick="resetView()">← Back</button>
+          <h5>Manage Units</h5>
+
+          <div class="unit-actions">
+            <a href="#" class="add-unit-link" onclick="showAddUnit()">+ Add Unit</a>
+            <input type="text" placeholder="Search by name or short name" class="unit-search" />
+          </div>
+
+          <table class="units-table">
+            <thead>
+              <tr>
+                <th>Unit Name</th>
+                <th>Short Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>kasuku</td>
+                <td>kak</td>
+                <td class="action-icons">
+                  <i class="fas fa-pen edit-unit"></i>
+                  <i class="fas fa-trash delete-unit"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>charger</td>
+                <td>chg-20</td>
+                <td class="action-icons">
+                  <i class="fas fa-pen edit-unit"></i>
+                  <i class="fas fa-trash delete-unit"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Add Unit Section -->
+        <section id="add-unit-card" class="hidden slide-in-card">
+          <button onclick="resetView()">← Back</button>
+          <h5>Add Unit</h5>
+          <form>
+            <input type="text" placeholder="Unit Name" required />
+            <input type="text" placeholder="Unit Short Name" required />
+            <button type="submit">Add Unit</button>
+            <button type="button" onclick="cancelAddUnit()">Cancel</button>
+          </form>
+        </section>
+
         <!-- Record Issues Section -->
         <section id="dynamic-content" class="hidden slide-in-card">
           <button onclick="resetView()">← Back</button>
@@ -135,61 +231,11 @@
           </div>
         </section>
 
-       <!-- Manage Units Section -->
-<section id="units-card" class="hidden slide-in-card">
-  <button onclick="resetView()">← Back</button>
-  <h5>Manage Units</h5>
-
-  <div class="unit-actions">
-    <a href="#" class="add-unit-link" onclick="showAddUnit()">+ Add Unit</a>
-    <input type="text" placeholder="Search by name or short name" class="unit-search" />
-  </div>
-
-  <table class="units-table">
-    <thead>
-      <tr>
-        <th>Unit Name</th>
-        <th>Short Name</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>kasuku</td>
-        <td>kak</td>
-        <td class="action-icons">
-          <i class="fas fa-pen edit-unit"></i>
-          <i class="fas fa-trash delete-unit"></i>
-        </td>
-      </tr>
-      <tr>
-        <td>charger</td>
-        <td>chg-20</td>
-        <td class="action-icons">
-          <i class="fas fa-pen edit-unit"></i>
-          <i class="fas fa-trash delete-unit"></i>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-
-        <!-- Add Unit Section -->
-        <section id="add-unit-card" class="hidden slide-in-card">
-          <button onclick="resetView()">← Back</button>
-          <h5>Add Unit</h5>
-          <form>
-            <input type="text" placeholder="Unit Name" required />
-            <input type="text" placeholder="Unit Short Name" required />
-            <button type="submit">Add Unit</button>
-            <button type="button" onclick="document.getElementById('add-unit-card').classList.add('hidden'); document.getElementById('units-card').classList.remove('hidden');">Cancel</button>
-          </form>
-        </section>
-
       </main>
     </div>
   </div>
+
+  <script src="search.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

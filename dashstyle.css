@@ -478,7 +478,7 @@ th, td {
 }
 
 .add-unit-link {
-  color: #007bff; /* Same blue as edit icon */
+  color: #007bff; 
   font-weight: bold;
   text-decoration: none;
   font-size: 1rem;
@@ -494,4 +494,81 @@ th, td {
   width: 250px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+/* Search section */
+.search-wrapper {
+  padding: 20px;
+}
+
+.main-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.inner-card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.summary-boxes {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.summary-box {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.sales-table th, .sales-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.sales-table th {
+  background-color: #f0f0f0;
+}
+
+.sku-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sku-button:hover {
+  background: #0056b3;
+}
+
+.hidden {
+  display: none;
 }
