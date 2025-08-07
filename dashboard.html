@@ -32,9 +32,8 @@
           <li><a href="#"><i class="fas fa-calendar-day"></i> Today's Summary</a></li>
           <li><a href="#"><i class="fas fa-money-bill-wave"></i> Debts</a></li>
           <li><a href="#"><i class="fas fa-chart-line"></i> Reports</a></li>
-<li><a href="#" data-target="units-card"><i class="fas fa-balance-scale"></i> Units</a></li>
+          <li><a href="#" data-target="units-card"><i class="fas fa-balance-scale"></i> Units</a></li>
           <li><a href="#" data-target="dynamic-content"><i class="fas fa-exclamation-circle"></i> Record Issues</a></li>
-
         </ul>
       </nav>
 
@@ -47,6 +46,7 @@
           </div>
         </div>
 
+        <!-- Default POS Interface -->
         <section id="default-content">
           <div class="form-row">
             <input type="text" placeholder="Select Customer" />
@@ -98,6 +98,7 @@
           </div>
         </section>
 
+        <!-- Record Issues Section -->
         <section id="dynamic-content" class="hidden slide-in-card">
           <button onclick="resetView()">← Back</button>
           <h5 id="dynamic-title">Manage Stock Issues</h5>
@@ -133,6 +134,59 @@
             </form>
           </div>
         </section>
+
+       <!-- Manage Units Section -->
+<section id="units-card" class="hidden slide-in-card">
+  <button onclick="resetView()">← Back</button>
+  <h5>Manage Units</h5>
+
+  <div class="unit-actions">
+    <a href="#" class="add-unit-link" onclick="showAddUnit()">+ Add Unit</a>
+    <input type="text" placeholder="Search by name or short name" class="unit-search" />
+  </div>
+
+  <table class="units-table">
+    <thead>
+      <tr>
+        <th>Unit Name</th>
+        <th>Short Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>kasuku</td>
+        <td>kak</td>
+        <td class="action-icons">
+          <i class="fas fa-pen edit-unit"></i>
+          <i class="fas fa-trash delete-unit"></i>
+        </td>
+      </tr>
+      <tr>
+        <td>charger</td>
+        <td>chg-20</td>
+        <td class="action-icons">
+          <i class="fas fa-pen edit-unit"></i>
+          <i class="fas fa-trash delete-unit"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+        <!-- Add Unit Section -->
+        <section id="add-unit-card" class="hidden slide-in-card">
+          <button onclick="resetView()">← Back</button>
+          <h5>Add Unit</h5>
+          <form>
+            <input type="text" placeholder="Unit Name" required />
+            <input type="text" placeholder="Unit Short Name" required />
+            <button type="submit">Add Unit</button>
+            <button type="button" onclick="document.getElementById('add-unit-card').classList.add('hidden'); document.getElementById('units-card').classList.remove('hidden');">Cancel</button>
+          </form>
+        </section>
+
       </main>
     </div>
   </div>

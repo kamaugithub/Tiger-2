@@ -79,4 +79,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("default-content").classList.remove('hidden');
   };
 
+  // === Manage Units Logic ===
+  const unitsCard = document.getElementById("units-card");
+  const addUnitCard = document.getElementById("add-unit-card");
+
+  window.showAddUnit = function () {
+    if (unitsCard && addUnitCard) {
+      unitsCard.classList.add("hidden");
+      addUnitCard.classList.remove("hidden");
+    }
+  };
+
+  // Delegate event handlers for edit/delete unit buttons (in case they are dynamically added later)
+  document.body.addEventListener("click", (e) => {
+    if (e.target.classList.contains("edit-unit")) {
+      if (unitsCard && addUnitCard) {
+        unitsCard.classList.add("hidden");
+        addUnitCard.classList.remove("hidden");
+      }
+    }
+
+    if (e.target.classList.contains("delete-unit")) {
+      const row = e.target.closest("tr");
+      if (row) row.remove();
+    }
+  });
 });

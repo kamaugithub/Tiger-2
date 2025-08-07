@@ -429,3 +429,69 @@ th, td {
   background-color: #ffae42;
   color: black;
 }
+/* Units */
+.units-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.units-table th, .units-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.units-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.units-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.units-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.action-icons i {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.action-icons .fa-pen {
+  color: #007bff;
+}
+
+.action-icons .fa-trash {
+  color: #dc3545;
+}
+
+/* Updated layout for Add Unit and Search */
+.unit-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add-unit-link {
+  color: #007bff; /* Same blue as edit icon */
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.add-unit-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.unit-search {
+  padding: 8px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
