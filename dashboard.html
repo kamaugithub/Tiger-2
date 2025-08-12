@@ -19,7 +19,7 @@
       <a href="index.html" class="home-icon" title="Go to Home">🏠</a>
     </header>
 
-    <div class="main-layout">
+    <div class="layout-container">
       <nav class="sidebar" id="nav">
         <div class="sidebar-label">Actions</div>
         <ul class="nav-links">
@@ -46,7 +46,6 @@
           </div>
         </div>
 
-        <!-- Default POS Interface -->
         <section id="default-content">
           <div class="form-row">
             <input type="text" placeholder="Select Customer" />
@@ -98,21 +97,26 @@
           </div>
         </section>
 
+        <!-- Wrap the two buttons inside a container that starts hidden -->
+        <div id="search-buttons" class="hidden">
+          <button class="sku-button" onclick="activateTab(this, 'search-card')">Search Sales</button>
+          <button class="sku-button" onclick="activateTab(this, 'sku-card')">Search SKU</button>
+        </div>
+
         <!-- Search Section -->
         <section id="search-card" class="hidden slide-in-card">
           <div class="search-wrapper">
             <div class="main-card">
+              <div class="top-buttons"></div>
               <div class="inner-card">
                 <h2>Search Sales</h2>
-                <input type="text" placeholder="Search by product name or variation description" class="search-input" />
-
+                <input type="text" placeholder="Search by customer name, product name or variation description" class="search-input" />
                 <div class="summary-boxes">
-                  <div class="summary-box">Overall Total Sales: <strong>Kshs 0.00</strong></div>
-                  <div class="summary-box">Total Credit Sales: <strong>Kshs 0.00</strong></div>
-                  <div class="summary-box">Total Complete Sales: <strong>Kshs 0.00</strong></div>
+                  <div class="summary-box">Overall Total Sales(All Items Today): <strong>Kshs 0.00</strong></div>
+                  <div class="summary-box">Total Credit Sales(All Items Today): <strong>Kshs 0.00</strong></div>
+                  <div class="summary-box">Total Complete Sales(All Items Today): <strong>Kshs 0.00</strong></div>
                 </div>
               </div>
-
               <table class="sales-table">
                 <thead>
                   <tr>
@@ -132,27 +136,59 @@
                 </thead>
                 <tbody id="sales-table-body"></tbody>
               </table>
-
-              <button class="sku-button" onclick="document.getElementById('sku-card').classList.remove('hidden')">Search SKU</button>
             </div>
           </div>
         </section>
 
         <!-- SKU Section -->
         <section id="sku-card" class="hidden slide-in-card">
-          <!-- SKU content here -->
+          <div class="search-wrapper">
+            <div class="main-card">
+              <div class="inner-card">
+                <h2>Search SKU</h2>
+                <input type="text" placeholder="Search by product name or variation description" class="search-input" />
+                <table class="sku-table">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Category</th>
+                      <th>Product Name</th>
+                      <th>Variation Description</th>
+                      <th>Unit</th>
+                      <th>SKU</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Fridge</td>
+                      <td>Hotpoint</td>
+                      <td>Blue TV</td>
+                      <td>Fridge</td>
+                      <td>fdg-21</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Charger-B</td>
+                      <td>Samsung</td>
+                      <td>Charger-b</td>
+                      <td>Pieces</td>
+                      <td>chg-12</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Manage Units Section -->
         <section id="units-card" class="hidden slide-in-card">
-          <button onclick="resetView()">← Back</button>
           <h5>Manage Units</h5>
-
           <div class="unit-actions">
             <a href="#" class="add-unit-link" onclick="showAddUnit()">+ Add Unit</a>
             <input type="text" placeholder="Search by name or short name" class="unit-search" />
           </div>
-
           <table class="units-table">
             <thead>
               <tr>
@@ -163,16 +199,16 @@
             </thead>
             <tbody>
               <tr>
-                <td>kasuku</td>
-                <td>kak</td>
+                <td>Kasuku</td>
+                <td>Kak</td>
                 <td class="action-icons">
                   <i class="fas fa-pen edit-unit"></i>
                   <i class="fas fa-trash delete-unit"></i>
                 </td>
               </tr>
               <tr>
-                <td>charger</td>
-                <td>chg-20</td>
+                <td>Charger</td>
+                <td>Chg-20</td>
                 <td class="action-icons">
                   <i class="fas fa-pen edit-unit"></i>
                   <i class="fas fa-trash delete-unit"></i>
@@ -184,7 +220,6 @@
 
         <!-- Add Unit Section -->
         <section id="add-unit-card" class="hidden slide-in-card">
-          <button onclick="resetView()">← Back</button>
           <h5>Add Unit</h5>
           <form>
             <input type="text" placeholder="Unit Name" required />
@@ -196,14 +231,11 @@
 
         <!-- Record Issues Section -->
         <section id="dynamic-content" class="hidden slide-in-card">
-          <button onclick="resetView()">← Back</button>
           <h5 id="dynamic-title">Manage Stock Issues</h5>
-
           <ul class="tab-list">
             <li><button class="tab active" onclick="showTab('view')">View Issues</button></li>
             <li><button class="tab" onclick="showTab('record')">Record Issue</button></li>
           </ul>
-
           <div class="tab-content view">
             <table>
               <thead>
@@ -212,7 +244,6 @@
               <tbody><tr><td colspan="7" class="text-muted">No issues recorded yet.</td></tr></tbody>
             </table>
           </div>
-
           <div class="tab-content record hidden">
             <form>
               <div class="form-control-group">
@@ -223,18 +254,15 @@
                   <option value="variation2">Variation 2</option>
                 </select>
               </div>
-
               <input type="number" placeholder="Enter quantity with issues" />
               <textarea placeholder="Describe the issue..."></textarea>
               <button type="submit" style="background: #007bff;">Record Issue</button>
             </form>
           </div>
         </section>
-
       </main>
     </div>
   </div>
-
   <script src="search.js"></script>
   <script src="script.js"></script>
 </body>

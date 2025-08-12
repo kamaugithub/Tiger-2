@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // === Sidebar Navigation - Load Dynamic Sections ===
   const sidebarLinks = document.querySelectorAll('.nav-links a[data-target]');
   const allSections = document.querySelectorAll('section');
+  const searchButtonsContainer = document.getElementById('search-buttons'); // added for controlling buttons
 
   sidebarLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -59,6 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetId === "dynamic-content") {
         document.getElementById("dynamic-title").textContent = "Manage Stock Issues";
       }
+
+      // Show search buttons only when clicking Search sidebar link (targetId === 'search-card')
+      if (searchButtonsContainer) {
+        if (targetId === 'search-card') {
+          searchButtonsContainer.classList.remove('hidden');
+        } else {
+          searchButtonsContainer.classList.add('hidden');
+        }
+      }
     });
   });
 
@@ -77,6 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.resetView = function () {
     allSections.forEach(section => section.classList.add('hidden'));
     document.getElementById("default-content").classList.remove('hidden');
+
+    // Hide search buttons on reset
+    if (searchButtonsContainer) {
+      searchButtonsContainer.classList.add('hidden');
+    }
   };
 
   // === Manage Units Logic ===

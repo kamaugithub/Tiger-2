@@ -48,3 +48,31 @@ function resetView() {
     link.classList.remove('active');
   });
 }
+function showSearchSales() {
+  document.getElementById('sku-card').classList.add('hidden');
+  document.querySelector('#search-card .inner-card').style.display = 'block';
+  document.querySelector('.sales-table').style.display = 'table';
+}
+
+function showSearchSKU() {
+  document.getElementById('sku-card').classList.remove('hidden');
+  document.querySelector('#search-card .inner-card').style.display = 'none';
+  document.querySelector('.sales-table').style.display = 'none';
+}
+function activateTab(button, targetId) {
+  // Hide all cards
+  document.querySelectorAll('.slide-in-card').forEach(card => {
+    card.classList.add('hidden');
+  });
+
+  // Show the selected card
+  document.getElementById(targetId).classList.remove('hidden');
+
+  // Remove active class from all buttons
+  document.querySelectorAll('.sku-button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  // Add active class to clicked button
+  button.classList.add('active');
+}

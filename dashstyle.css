@@ -141,6 +141,7 @@ body {
 
 .main-content {
   flex: 1;
+  min-width: 0;
 }
 
 .card {
@@ -571,4 +572,132 @@ th, td {
 
 .hidden {
   display: none;
+}
+.top-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.sku-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.sku-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.sku-table th, .sku-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.sku-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+.search-wrapper {
+  padding: 1rem;
+}
+
+.main-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.top-buttons {
+  display: flex;
+  gap: 10px; /* Reduce this to control spacing */
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align buttons to the left */
+}
+
+.sku-button {
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sku-button:hover {
+  background-color: #0056b3;
+}
+.sku-button.active,
+.sku-button:active {
+  background-color: #0056b3; /* Dark blue */
+  color: white;
+}
+
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.sku-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sku-table th, .sku-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+/* New wrapper for sidebar + main content */
+.layout-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Sidebar tweaks */
+.sidebar {
+  flex: 0 0 220px;
+  min-height: 100vh; /* full viewport height */
+  overflow-y: auto;
+}
+
+/* Main content takes remaining width */
+.main-content {
+  flex: 1;
+  min-width: 0; /* for flexbox overflow fixes */
+}
+
+/* Ensure slide-in cards do not break flex layout */
+.slide-in-card {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive tweaks: stack vertically on small screens */
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    min-height: auto;
+    width: 100%;
+  }
+
+  .main-content {
+    width: 100%;
+  }
 }
