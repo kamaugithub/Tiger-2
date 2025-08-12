@@ -24,7 +24,7 @@
         <div class="sidebar-label">Actions</div>
         <ul class="nav-links">
           <li><a href="#" data-target="search-card"><i class="fas fa-search"></i> Search</a></li>
-          <li><a href="#"><i class="fas fa-truck"></i> Suppliers</a></li>
+          <li><a href="#" data-target="suppliers-card"><i class="fas fa-truck"></i> Suppliers</a></li>
           <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
           <li><a href="#"><i class="fas fa-tags"></i> Categories</a></li>
           <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
@@ -182,6 +182,53 @@
           </div>
         </section>
 
+        <!-- Suppliers Section -->
+        <section id="suppliers-card" class="hidden slide-in-card">
+          <div class="search-wrapper">
+            <div class="main-card">
+              <div class="top-buttons">
+                <button class="sku-button active" onclick="activateSupplierTab(this, 'manage-suppliers')">Manage Suppliers</button>
+                <button class="sku-button" onclick="activateSupplierTab(this, 'add-suppliers')">Add Suppliers</button>
+              </div>
+
+              <!-- Manage Suppliers Content -->
+              <div id="manage-suppliers" class="inner-card">
+                <h2>Manage Suppliers</h2>
+                <input type="text" placeholder="Search suppliers..." class="search-input" />
+                <table class="sku-table">
+                  <thead>
+                    <tr>
+                      <th>Supplier Name</th>
+                      <th>Contact</th>
+                      <th>Location</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Electric</td><td>07889955</td><td>Msa</td><td>Edit/Delete</td></tr>
+                    <tr><td>ramon</td><td>075657676</td><td>n/a</td><td>Edit/Delete</td></tr>
+                    <tr><td>John</td><td>07889955</td><td>Msa</td><td>Edit/Delete</td></tr>
+                    <tr><td>kelvin</td><td>0799888782</td><td>nairobi</td><td>Edit/Delete</td></tr>
+                    <tr><td>default</td><td>na</td><td>na</td><td>Edit/Delete</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Add Suppliers Content -->
+              <div id="add-suppliers" class="inner-card hidden">
+                <h2>Add Supplier</h2>
+                <form>
+                  <input type="text" placeholder="Supplier Name" required class="search-input" />
+                  <input type="text" placeholder="Contact" required class="search-input" />
+                  <input type="text" placeholder="Location" required class="search-input" />
+                  <button type="submit" class="sku-button">Add Supplier</button>
+                  <button type="button" class="sku-button" onclick="activateSupplierTab(document.querySelector('.top-buttons .sku-button'), 'manage-suppliers')">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Manage Units Section -->
         <section id="units-card" class="hidden slide-in-card">
           <h5>Manage Units</h5>
@@ -265,5 +312,6 @@
   </div>
   <script src="search.js"></script>
   <script src="script.js"></script>
+  <script src="suppliers.js"></script>
 </body>
 </html>
