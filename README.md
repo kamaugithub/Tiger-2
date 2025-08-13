@@ -3,9 +3,9 @@ TIGER POS
 A gradient-themed Point of Sale (POS) system focused on sleek design, responsive layout, and dynamic user interaction.
 
  Features
-- Responsive layout using Bootstrap
+- Responsive layout.
 - Dynamic search functionality with fallback dummy data
-- Modular CSS styling (`dashstyle.css`)
+- Modular CSS styling 
 - Seamless user flow from login to dashboard
 - Animated UI elements for enhanced user experience
 - Cross platform
