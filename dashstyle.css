@@ -764,5 +764,186 @@ th, td {
   display: flex;
   gap: 8px;
 }
+.hover-highlight:hover {
+  background-color: #f0f8ff;
+  transition: background-color 0.3s ease;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+#product-table-body tr {
+  height: 42px;
+}
+
+@media (max-width: 576px) {
+  .d-flex.flex-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* Blue buttons like other cards */
+.btn-blue {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-blue:hover {
+  background-color: #0056b3;
+}
+
+/* Gray cancel button */
+.btn-gray {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-gray:hover {
+  background-color: #5a6268;
+}
+
+
+.product-input {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Product actions layout */
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.edit-icon {
+  color: #0d6efd; /* blue */
+  font-size: 1.2rem;
+}
+
+.delete-icon {
+  color: #dc3545; /* red */
+  font-size: 1.2rem;
+}
+
+td .gap-4 i {
+  margin: 0 0.4rem; /* adds spacing between icons */
+}
+.edit-icon {
+  color: #0d6efd; /* blue */
+  font-size: 1.2rem;
+}
+
+.delete-icon {
+  color: #dc3545; /* red */
+  font-size: 1.2rem;
+}
+
+/* Optional: slightly bigger gap before the button */
+.manage-variations {
+  margin-left: 1rem; 
+}
+#products-view table {
+  margin-top: 15px; /* adjust as needed for breathing space */
+}
+#product-search {
+  width: 65%; /* adjust % as needed */
+  max-width: 600px; /* optional limit */
+}
+/* card-section-products */
+.card-section {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.4s ease;
+  transform: translateX(100%);
+  opacity: 0;
+  position: relative;
+}
+
+.card-section.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+/* Add/Edit Card Slide-In */
+.card-section {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform: translateX(100%);
+  opacity: 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* When visible */
+.card-section.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* When hidden */
+.card-section.hidden {
+  display: block; /* Ensure it's in the layout */
+  transform: translateX(100%);
+  opacity: 0;
+}
 
 

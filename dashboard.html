@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
           <li><a href="#" data-target="suppliers-card"><i class="fas fa-truck"></i> Suppliers</a></li>
           <li><a href="#" data-target="customers-card"><i class="fas fa-users"></i> Customers</a></li>
           <li><a href="#" data-target="categories-card"><i class="fas fa-tags"></i> Categories</a></li>
-          <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
+          <li><a href="#" data-target="products-card"><i class="fas fa-cube"></i> Products</a></li>
           <li><a href="#"><i class="fas fa-warehouse"></i> Stocking</a></li>
           <li><a href="#"><i class="fas fa-calendar-day"></i> Today's Summary</a></li>
           <li><a href="#"><i class="fas fa-money-bill-wave"></i> Debts</a></li>
@@ -97,8 +98,7 @@
             </div>
           </div>
         </section>
-
-        <!-- Search Buttons (hidden by default) -->
+        <!-- Search Buttons -->
         <div id="search-buttons" class="hidden">
           <button class="sku-button" onclick="activateTab(this, 'search-card')">Search Sales</button>
           <button class="sku-button" onclick="activateTab(this, 'sku-card')">Search SKU</button>
@@ -192,7 +192,6 @@
                 <button class="sku-button" onclick="activateSupplierTab(this, 'add-suppliers')">Add Suppliers</button>
               </div>
 
-              <!-- Manage Suppliers Content -->
               <div id="manage-suppliers" class="inner-card">
                 <h2>Manage Suppliers</h2>
                 <input type="text" placeholder="Search suppliers..." class="search-input" />
@@ -255,7 +254,6 @@
                 </table>
               </div>
 
-              <!-- Add Suppliers Content -->
               <div id="add-suppliers" class="inner-card hidden">
                 <h2>Add Supplier</h2>
                 <form>
@@ -270,48 +268,44 @@
           </div>
         </section>
 
-    <!-- Customers Section -->
-<section id="customers-card" class="hidden slide-in-card">
-  <div class="search-wrapper">
-    <div class="main-card">
-      <div class="top-buttons">
-        <button class="sku-button active" onclick="activateCustomerTab(this, 'manage-customers')">Manage Customers</button>
-        <button class="sku-button" onclick="activateCustomerTab(this, 'edit-customer')">Edit Customer</button>
-      </div>
+        <!-- Customers Section -->
+        <section id="customers-card" class="hidden slide-in-card">
+          <div class="search-wrapper">
+            <div class="main-card">
+              <div class="top-buttons">
+                <button class="sku-button active" onclick="activateCustomerTab(this, 'manage-customers')">Manage Customers</button>
+                <button class="sku-button" onclick="activateCustomerTab(this, 'edit-customer')">Edit Customer</button>
+              </div>
 
-      <!-- Manage Customers Content -->
-      <div id="manage-customers" class="inner-card">
-        <h2>Manage Customers</h2>
-        <input type="text" placeholder="Search by customer name..." class="search-input" id="customer-search" />
-        <table class="sku-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Customer Name</th>
-              <th>Contact</th>
-              <th>Location</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="customer-table-body">
-            <!-- Rows will be injected by JS -->
-          </tbody>
-        </table>
-      </div>
+              <div id="manage-customers" class="inner-card">
+                <h2>Manage Customers</h2>
+                <input type="text" placeholder="Search by customer name..." class="search-input" id="customer-search" />
+                <table class="sku-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Customer Name</th>
+                      <th>Contact</th>
+                      <th>Location</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="customer-table-body"></tbody>
+                </table>
+              </div>
 
-      <!-- Edit Customer Content -->
-      <div id="edit-customer" class="inner-card hidden">
-        <h2>Edit Customer</h2>
-        <form id="edit-customer-form">
-          <input type="text" id="edit-name" placeholder="Customer Name" class="search-input" required />
-          <input type="text" id="edit-contact" placeholder="Contact" class="search-input" required />
-          <input type="text" id="edit-location" placeholder="Location" class="search-input" required />
-          <button type="submit" class="sku-button">Update Customer</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+              <div id="edit-customer" class="inner-card hidden">
+                <h2>Edit Customer</h2>
+                <form id="edit-customer-form">
+                  <input type="text" id="edit-name" placeholder="Customer Name" class="search-input" required />
+                  <input type="text" id="edit-contact" placeholder="Contact" class="search-input" required />
+                  <input type="text" id="edit-location" placeholder="Location" class="search-input" required />
+                  <button type="submit" class="sku-button">Update Customer</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <!-- Categories Section -->
         <section id="categories-card" class="hidden slide-in-card">
@@ -322,7 +316,6 @@
                 <button class="sku-button" onclick="activateCategoryTab(this, 'add-category')">Add Category</button>
               </div>
 
-              <!-- Manage Categories Content -->
               <div id="manage-categories" class="inner-card">
                 <h2>Manage Categories</h2>
                 <input type="text" placeholder="Search categories..." class="search-input" />
@@ -334,14 +327,12 @@
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <td class="action-icons">
-  <i class="fas fa-pen edit-category"></i>
-  <i class="fas fa-trash delete-category"></i>
-</td>
+                  <tbody>
+                    <!-- Categories rows will be injected dynamically -->
+                  </tbody>
                 </table>
               </div>
 
-              <!-- Add Category Content -->
               <div id="add-category" class="inner-card hidden">
                 <h2>Add Category</h2>
                 <form id="add-category-form">
@@ -354,8 +345,59 @@
             </div>
           </div>
         </section>
+<!-- Products Section -->
+<section id="products-card" class="card hidden">
+  <div class="card shadow-sm mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h4 class="fw-bold text-primary mb-0">Products</h4>
+      <div class="top-buttons">
+        <button id="view-products-btn" class="sku-button active">View Products</button>
+        <button id="add-edit-btn" class="sku-button">Add/Edit Product</button>
+      </div>
+    </div>
 
-        <!-- Units Section -->
+    <!-- View Products Table -->
+    <div class="card-body" id="products-view">
+      <div class="d-flex justify-content-end mb-3">
+        <input type="text" class="form-control w-50" placeholder="Search by product or category..." id="product-search">
+      </div>
+
+      <table class="table table-bordered table-hover">
+        <thead class="table-light text-center">
+          <tr>
+            <th>No.</th>
+            <th>Category</th>
+            <th>Product Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="product-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add/Edit Product Card (moved outside products-view) -->
+  <div id="add-edit-card" class="card-section hidden">
+    <div class="card-header">
+      <h4 id="form-title">Add/Edit Product</h4>
+    </div>
+    <div class="card-body">
+      <form id="product-form">
+        <label for="product-category">Category</label>
+        <input type="text" id="product-category" class="input-field" required>
+
+        <label for="product-name">Product Name</label>
+        <input type="text" id="product-name" class="input-field" required>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Save</button>
+          <button type="button" id="cancel-edit" class="btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+  <!-- Units Section -->
         <section id="units-card" class="hidden slide-in-card">
           <h5>Manage Units</h5>
           <div class="unit-actions">
@@ -394,52 +436,25 @@
         <!-- Add Unit Section -->
         <section id="add-unit-card" class="hidden slide-in-card">
           <h5>Add Unit</h5>
-          <form>
-            <input type="text" placeholder="Unit Name" required />
-            <input type="text" placeholder="Unit Short Name" required />
-            <button type="submit">Add Unit</button>
-            <button type="button" onclick="cancelAddUnit()">Cancel</button>
+          <form id="add-unit-form">
+            <input type="text" placeholder="Unit Name" required class="unit-input" />
+            <input type="text" placeholder="Short Name" required class="unit-input" />
+            <button type="submit" class="sku-button">Add Unit</button>
           </form>
         </section>
-
-        <!-- Record Issues Section -->
-        <section id="dynamic-content" class="hidden slide-in-card">
-          <h5 id="dynamic-title">Manage Stock Issues</h5>
-          <ul class="tab-list">
-            <li><button class="tab active" onclick="showTab('view')">View Issues</button></li>
-            <li><button class="tab" onclick="showTab('record')">Record Issue</button></li>
-          </ul>
-          <div class="tab-content view">
-            <table>
-              <thead>
-                <tr><th>Stock ID</th><th>Product Variation</th><th>Supplier</th><th>Qty</th><th>Notes</th><th>Date</th><th>Actions</th></tr>
-              </thead>
-              <tbody><tr><td colspan="7" class="text-muted">No issues recorded yet.</td></tr></tbody>
-            </table>
-          </div>
-          <div class="tab-content record hidden">
-            <form>
-              <div class="form-control-group">
-                <label for="variation">Product Variation</label>
-                <select id="variation" name="variation" required>
-                  <option value="" disabled selected>-- Select Product Variation --</option>
-                  <option value="variation1">Variation 1</option>
-                  <option value="variation2">Variation 2</option>
-                </select>
-              </div>
-              <input type="number" placeholder="Enter quantity with issues" />
-              <textarea placeholder="Describe the issue..."></textarea>
-              <button type="submit" class="record-btn">Record Issue</button>
-            </form>
-          </div>
-        </section>
+<!-- Record Issues Section --> 
+ <section id="dynamic-content" class="hidden slide-in-card">
+   <h5 id="dynamic-title">Manage Stock Issues</h5>
+    <ul class="tab-list"> <li><button class="tab active" onclick="showTab('view')">View Issues</button></li> <li><button class="tab" onclick="showTab('record')">Record Issue</button></li> </ul> <div class="tab-content view"> <table> <thead> <tr><th>Stock ID</th><th>Product Variation</th><th>Supplier</th><th>Qty</th><th>Notes</th><th>Date</th><th>Actions</th></tr> </thead> <tbody><tr><td colspan="7" class="text-muted">No issues recorded yet.</td></tr></tbody> </table> </div> <div class="tab-content record hidden"> <form> <div class="form-control-group"> <label for="variation">Product Variation</label> <select id="variation" name="variation" required> <option value="" disabled selected>-- Select Product Variation --</option> <option value="variation1">Variation 1</option> <option value="variation2">Variation 2</option> </select> </div> <input type="number" placeholder="Enter quantity with issues" /> <textarea placeholder="Describe the issue..."></textarea> <button type="submit" class="record-btn">Record Issue</button> </form> </div> </section>
       </main>
     </div>
   </div>
-<script src="search.js"></script>
+
   <script src="script.js"></script>
-  <script src="suppliers.js"></script>
+  <script src="products.js"></script>
   <script src="customers.js"></script>
-  <script src="categories.js"></script>
+  <script src="suppliers.js"></script>
+    <script src="categories.js"></script>
+      <script src="search.js"></script>
 </body>
 </html>
