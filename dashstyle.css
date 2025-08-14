@@ -701,3 +701,68 @@ th, td {
     width: 100%;
   }
 }
+.record-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.record-btn:hover {
+  background-color: #0056b3;
+}
+/* --- Categories module tweaks --- */
+#categories-card .categories-wrapper {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Prevent nested categories sidebar from inheriting the big dark main sidebar look */
+#categories-card .sidebar {
+  background: #fff;
+  color: #333;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: auto;
+  overflow: visible;
+}
+
+/* Tabs inside categories */
+#categories-card .nav-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  cursor: pointer;
+  text-align: left;
+}
+#categories-card .nav-btn:hover { background: #eee; }
+
+/* Category list items */
+#categories-card .category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+#categories-card .category-item .actions {
+  display: flex;
+  gap: 8px;
+}
+
+

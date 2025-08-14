@@ -26,7 +26,7 @@
           <li><a href="#" data-target="search-card"><i class="fas fa-search"></i> Search</a></li>
           <li><a href="#" data-target="suppliers-card"><i class="fas fa-truck"></i> Suppliers</a></li>
           <li><a href="#" data-target="customers-card"><i class="fas fa-users"></i> Customers</a></li>
-          <li><a href="#"><i class="fas fa-tags"></i> Categories</a></li>
+          <li><a href="#" data-target="categories-card"><i class="fas fa-tags"></i> Categories</a></li>
           <li><a href="#"><i class="fas fa-box-open"></i> Products</a></li>
           <li><a href="#"><i class="fas fa-warehouse"></i> Stocking</a></li>
           <li><a href="#"><i class="fas fa-calendar-day"></i> Today's Summary</a></li>
@@ -46,6 +46,7 @@
           </div>
         </div>
 
+        <!-- Default Content -->
         <section id="default-content">
           <div class="form-row">
             <input type="text" placeholder="Select Customer" />
@@ -97,7 +98,7 @@
           </div>
         </section>
 
-        <!-- Wrap the two buttons inside a container that starts hidden -->
+        <!-- Search Buttons (hidden by default) -->
         <div id="search-buttons" class="hidden">
           <button class="sku-button" onclick="activateTab(this, 'search-card')">Search Sales</button>
           <button class="sku-button" onclick="activateTab(this, 'sku-card')">Search SKU</button>
@@ -205,11 +206,51 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr><td>Electric</td><td>07889955</td><td>Msa</td><td>Edit/Delete</td></tr>
-                    <tr><td>ramon</td><td>075657676</td><td>n/a</td><td>Edit/Delete</td></tr>
-                    <tr><td>John</td><td>07889955</td><td>Msa</td><td>Edit/Delete</td></tr>
-                    <tr><td>kelvin</td><td>0799888782</td><td>nairobi</td><td>Edit/Delete</td></tr>
-                    <tr><td>default</td><td>na</td><td>na</td><td>Edit/Delete</td></tr>
+                    <tr data-id="1">
+                      <td>Electric</td>
+                      <td>07889955</td>
+                      <td>Msa</td>
+                      <td class="action-icons">
+                        <i class="fas fa-pen edit-supplier" title="Edit"></i>
+                        <i class="fas fa-trash delete-supplier" title="Delete"></i>
+                      </td>
+                    </tr>
+                    <tr data-id="2">
+                      <td>Ramon</td>
+                      <td>075657676</td>
+                      <td>n/a</td>
+                      <td class="action-icons">
+                        <i class="fas fa-pen edit-supplier" title="Edit"></i>
+                        <i class="fas fa-trash delete-supplier" title="Delete"></i>
+                      </td>
+                    </tr>
+                    <tr data-id="3">
+                      <td>John</td>
+                      <td>07889955</td>
+                      <td>Msa</td>
+                      <td class="action-icons">
+                        <i class="fas fa-pen edit-supplier" title="Edit"></i>
+                        <i class="fas fa-trash delete-supplier" title="Delete"></i>
+                      </td>
+                    </tr>
+                    <tr data-id="4">
+                      <td>Kelvin</td>
+                      <td>0799888782</td>
+                      <td>Nairobi</td>
+                      <td class="action-icons">
+                        <i class="fas fa-pen edit-supplier" title="Edit"></i>
+                        <i class="fas fa-trash delete-supplier" title="Delete"></i>
+                      </td>
+                    </tr>
+                    <tr data-id="5">
+                      <td>Default</td>
+                      <td>na</td>
+                      <td>na</td>
+                      <td class="action-icons">
+                        <i class="fas fa-pen edit-supplier" title="Edit"></i>
+                        <i class="fas fa-trash delete-supplier" title="Delete"></i>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -229,50 +270,92 @@
           </div>
         </section>
 
-        <!-- Customers Section (Added) -->
-        <section id="customers-card" class="hidden slide-in-card">
+    <!-- Customers Section -->
+<section id="customers-card" class="hidden slide-in-card">
+  <div class="search-wrapper">
+    <div class="main-card">
+      <div class="top-buttons">
+        <button class="sku-button active" onclick="activateCustomerTab(this, 'manage-customers')">Manage Customers</button>
+        <button class="sku-button" onclick="activateCustomerTab(this, 'edit-customer')">Edit Customer</button>
+      </div>
+
+      <!-- Manage Customers Content -->
+      <div id="manage-customers" class="inner-card">
+        <h2>Manage Customers</h2>
+        <input type="text" placeholder="Search by customer name..." class="search-input" id="customer-search" />
+        <table class="sku-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Customer Name</th>
+              <th>Contact</th>
+              <th>Location</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="customer-table-body">
+            <!-- Rows will be injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Edit Customer Content -->
+      <div id="edit-customer" class="inner-card hidden">
+        <h2>Edit Customer</h2>
+        <form id="edit-customer-form">
+          <input type="text" id="edit-name" placeholder="Customer Name" class="search-input" required />
+          <input type="text" id="edit-contact" placeholder="Contact" class="search-input" required />
+          <input type="text" id="edit-location" placeholder="Location" class="search-input" required />
+          <button type="submit" class="sku-button">Update Customer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <!-- Categories Section -->
+        <section id="categories-card" class="hidden slide-in-card">
           <div class="search-wrapper">
             <div class="main-card">
               <div class="top-buttons">
-                <button class="sku-button active" onclick="activateCustomerTab(this, 'manage-customers')">Manage Customers</button>
-                <button class="sku-button" onclick="activateCustomerTab(this, 'edit-customer')">Edit Customer</button>
+                <button class="sku-button active" onclick="activateCategoryTab(this, 'manage-categories')">Manage Categories</button>
+                <button class="sku-button" onclick="activateCategoryTab(this, 'add-category')">Add Category</button>
               </div>
 
-              <!-- Manage Customers Content -->
-              <div id="manage-customers" class="inner-card">
-                <h2>Manage Customers</h2>
-                <input type="text" placeholder="Search by customer name..." class="search-input" id="customer-search" />
+              <!-- Manage Categories Content -->
+              <div id="manage-categories" class="inner-card">
+                <h2>Manage Categories</h2>
+                <input type="text" placeholder="Search categories..." class="search-input" />
                 <table class="sku-table">
                   <thead>
                     <tr>
-                      <th>#</th>
-                      <th>Customer Name</th>
-                      <th>Contact</th>
-                      <th>Location</th>
+                      <th>Category Name</th>
+                      <th>Branch</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody id="customer-table-body">
-                    <!-- Rows will be injected by JS -->
-                  </tbody>
+                  <td class="action-icons">
+  <i class="fas fa-pen edit-category"></i>
+  <i class="fas fa-trash delete-category"></i>
+</td>
                 </table>
               </div>
 
-              <!-- Edit Customer Content -->
-              <div id="edit-customer" class="inner-card hidden">
-                <h2>Edit Customer</h2>
-                <form id="edit-customer-form">
-                  <input type="text" id="edit-name" placeholder="Customer Name" class="search-input" required />
-                  <input type="text" id="edit-contact" placeholder="Contact" class="search-input" required />
-                  <input type="text" id="edit-location" placeholder="Location" class="search-input" required />
-                  <button type="submit" class="sku-button">Update Customer</button>
+              <!-- Add Category Content -->
+              <div id="add-category" class="inner-card hidden">
+                <h2>Add Category</h2>
+                <form id="add-category-form">
+                  <input type="text" placeholder="Category Name" required class="search-input" />
+                  <input type="text" placeholder="Branch" class="search-input" />
+                  <button type="submit" class="sku-button">Add Category</button>
+                  <button type="button" class="sku-button" onclick="activateCategoryTab(document.querySelector('.top-buttons .sku-button'), 'manage-categories')">Cancel</button>
                 </form>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Manage Units Section -->
+        <!-- Units Section -->
         <section id="units-card" class="hidden slide-in-card">
           <h5>Manage Units</h5>
           <div class="unit-actions">
@@ -346,16 +429,17 @@
               </div>
               <input type="number" placeholder="Enter quantity with issues" />
               <textarea placeholder="Describe the issue..."></textarea>
-              <button type="submit" style="background: #007bff;">Record Issue</button>
+              <button type="submit" class="record-btn">Record Issue</button>
             </form>
           </div>
         </section>
       </main>
     </div>
   </div>
-  <script src="search.js"></script>
+<script src="search.js"></script>
   <script src="script.js"></script>
   <script src="suppliers.js"></script>
   <script src="customers.js"></script>
+  <script src="categories.js"></script>
 </body>
 </html>

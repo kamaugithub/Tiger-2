@@ -53,32 +53,67 @@ function setupAddSupplierForm() {
       return;
     }
 
-    // For now, just alert and reset; you can expand to actually add a row or call backend
-    alert(`Added supplier:\nName: ${name}\nContact: ${contact}\nLocation: ${location}`);
-    form.reset();
+    // Check if editing an existing row
+    const editingRow = form.dataset.editingRow;
+    if (editingRow) {
+      // Update the existing row
+      const row = document.querySelector(`#manage-suppliers tbody tr[data-id='${editingRow}']`);
+      if (row) {
+        row.cells[0].textContent = name;
+        row.cells[1].textContent = contact;
+        row.cells[2].textContent = location;
+      }
+      delete form.dataset.editingRow;
+    } else {
+      // Add new row
+      const tableBody = document.querySelector('#manage-suppliers tbody');
+      const newRow = document.createElement('tr');
+      const rowId = Date.now(); // simple unique ID
+      newRow.dataset.id = rowId;
+      newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${contact}</td>
+        <td>${location}</td>
+        <td class="action-icons">
+          <i class="fas fa-pen edit-supplier" title="Edit"></i>
+          <i class="fas fa-trash delete-supplier" title="Delete"></i>
+        </td>
+      `;
+      tableBody.appendChild(newRow);
+    }
 
-    // Switch back to Manage Suppliers tab
+    form.reset();
     activateSupplierTab(document.querySelector('#suppliers-card .top-buttons .sku-button'), 'manage-suppliers');
   });
 }
 
-// Optional: placeholder for Edit/Delete click handlers (enhance as needed)
+// Handle Edit/Delete click events
 function setupSupplierActions() {
   const tableBody = document.querySelector('#manage-suppliers tbody');
-  if (!tableBody) return;
+  const form = document.querySelector('#add-suppliers form');
+  if (!tableBody || !form) return;
 
   tableBody.addEventListener('click', (e) => {
     const target = e.target;
+    const row = target.closest('tr');
+    if (!row) return;
 
-    if (target.textContent.toLowerCase().includes('edit')) {
-      alert('Edit Supplier - feature to be implemented');
-      // Add your edit logic here
+    // Edit supplier
+    if (target.classList.contains('edit-supplier')) {
+      const cells = row.querySelectorAll('td');
+      form.querySelectorAll('input')[0].value = cells[0].textContent;
+      form.querySelectorAll('input')[1].value = cells[1].textContent;
+      form.querySelectorAll('input')[2].value = cells[2].textContent;
+      form.dataset.editingRow = row.dataset.id;
+
+      // Switch to Add Suppliers tab
+      activateSupplierTab(document.querySelector('#suppliers-card .top-buttons .sku-button:nth-child(2)'), 'add-suppliers');
     }
 
-    if (target.textContent.toLowerCase().includes('delete')) {
+    // Delete supplier
+    if (target.classList.contains('delete-supplier')) {
       if (confirm('Are you sure you want to delete this supplier?')) {
-        const row = target.closest('tr');
-        if (row) row.remove();
+        row.remove();
       }
     }
   });
@@ -91,7 +126,7 @@ function initSuppliersSection() {
   setupSupplierActions();
 }
 
-// Run the initialization when DOM is loaded or when you load the suppliers section
+// Run the initialization when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   initSuppliersSection();
 });
