@@ -781,169 +781,223 @@ th, td {
     align-items: flex-start;
   }
 }
-/* Blue buttons like other cards */
-.btn-blue {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+/* --- Products Section Styles --- */
+#products-card {
+  padding: 0; /* Remove padding from the main card */
 }
 
-.btn-blue:hover {
-  background-color: #0056b3;
-}
-
-/* Gray cancel button */
-.btn-gray {
-  background-color: #6c757d;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn-gray:hover {
-  background-color: #5a6268;
-}
-
-
-.product-input {
-  width: 100%;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Product actions layout */
-.product-actions {
+/* Header for the product section */
+#products-card .card-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.icon-row {
+#products-card .header-buttons {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 4px;
-}
-.edit-icon {
-  color: #0d6efd; /* blue */
-  font-size: 1.2rem;
+  gap: 5px;
 }
 
-.delete-icon {
-  color: #dc3545; /* red */
-  font-size: 1.2rem;
+/* General button styles for the header */
+#products-card .header-buttons .btn {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #555;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  transition: all 0.2s ease;
 }
 
-td .gap-4 i {
-  margin: 0 0.4rem; /* adds spacing between icons */
-}
-.edit-icon {
-  color: #0d6efd; /* blue */
-  font-size: 1.2rem;
-}
-
-.delete-icon {
-  color: #dc3545; /* red */
-  font-size: 1.2rem;
+#products-card .header-buttons .btn.active {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-bottom: 2px solid var(--primary-color);
+  font-weight: bold;
 }
 
-/* Optional: slightly bigger gap before the button */
-.manage-variations {
-  margin-left: 1rem; 
-}
-#products-view table {
-  margin-top: 15px; /* adjust as needed for breathing space */
-}
-#product-search {
-  width: 65%; /* adjust % as needed */
-  max-width: 600px; /* optional limit */
-}
-/* card-section-products */
-.card-section {
-  background: #fff;
-  border: 1px solid #ccc;
+#products-card .card-body {
   padding: 20px;
-  margin-top: 20px;
-  width: 100%;
-  max-width: 600px;
-  transition: transform 0.4s ease;
-  transform: translateX(100%);
-  opacity: 0;
+}
+
+/* Search input styling */
+.search-container {
   position: relative;
-}
-
-.card-section.visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.input-field {
   width: 100%;
-  padding: 8px;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px 40px 10px 15px; /* Add space for the icon */
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.search-container .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+/* Product table styling */
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.products-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.products-table td:last-child {
+  text-align: center;
+}
+
+.products-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Action icons styling */
+.action-icons i {
+  margin: 0 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.action-icons .edit-icon {
+  color: var(--secondary-color); /* A nice blue */
+}
+
+.action-icons .delete-icon {
+  color: var(--danger-color); /* A nice red */
+}
+
+.action-icons .edit-icon:hover {
+  color: #0056b3;
+}
+
+.action-icons .delete-icon:hover {
+  color: #b02a37;
+}
+
+/* Form card for adding/editing */
+.form-card {
+  transition: all 0.4s ease;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.form-card.visible {
+  opacity: 1;
+  height: auto;
+  padding: 20px;
+}
+
+.input-group {
   margin-bottom: 15px;
-  border: 1px solid #aaa;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
   border-radius: 4px;
 }
 
+/* Form action buttons */
 .form-actions {
   display: flex;
   gap: 10px;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: white;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-/* Add/Edit Card Slide-In */
-.card-section {
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
   margin-top: 20px;
-  width: 100%;
-  max-width: 600px;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  transform: translateX(100%);
-  opacity: 0;
-  position: relative;
-  z-index: 10;
 }
 
-/* When visible */
-.card-section.visible {
-  transform: translateX(0);
-  opacity: 1;
+.form-actions .btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-/* When hidden */
-.card-section.hidden {
-  display: block; /* Ensure it's in the layout */
-  transform: translateX(100%);
-  opacity: 0;
+.form-actions .btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
 }
 
+.form-actions .btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+#products-card .header-buttons .btn {
+  padding: 8px 16px;
+  border: 1px solid #007bff; /* Add a solid blue border */
+  background-color: #007bff; /* Blue background for the default state */
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners for a softer look */
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  font-weight: 500;
+}
 
+#products-card .header-buttons .btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  border-color: #0056b3;
+}
+
+#products-card .header-buttons .btn.active {
+  background-color: #0056b3; /* Darker blue when the button is active */
+  border-color: #004d99;
+}
+/* Style for the "Manage Variations" button */
+.manage-variations-btn {
+    background-color: #28a745; /* Green background */
+    color: #fff; /* White text color */
+    border: 1px solid #218838; /* A slightly darker green border */
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px; /* Add some space between the icons and the button */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.manage-variations-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #1e7e34;
+}
+
+/* Ensure icons and button are aligned correctly */
+.action-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Add some spacing for the icons */
+.action-icons .edit-icon,
+.action-icons .delete-icon {
+    margin: 0 5px;
+}

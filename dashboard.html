@@ -345,57 +345,43 @@
             </div>
           </div>
         </section>
-<!-- Products Section -->
-<section id="products-card" class="card hidden">
-  <div class="card shadow-sm mb-4">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h4 class="fw-bold text-primary mb-0">Products</h4>
-      <div class="top-buttons">
-        <button id="view-products-btn" class="sku-button active">View Products</button>
-        <button id="add-edit-btn" class="sku-button">Add/Edit Product</button>
-      </div>
-    </div>
+   <!-- products section!! -->     
+<section id="products-card" class="hidden slide-in-card">
+    <div class="search-wrapper">
+        <div class="main-card">
+            <div class="top-buttons">
+                <button class="sku-button active" onclick="activateProductTab(this, 'manage-products')">View Products</button>
+                <button class="sku-button" onclick="activateProductTab(this, 'add-product')">Add / Edit Product</button>
+            </div>
 
-    <!-- View Products Table -->
-    <div class="card-body" id="products-view">
-      <div class="d-flex justify-content-end mb-3">
-        <input type="text" class="form-control w-50" placeholder="Search by product or category..." id="product-search">
-      </div>
+            <div id="manage-products" class="inner-card">
+                <h2>Manage Products</h2>
+                <input type="text" placeholder="Search by product or category..." class="search-input" id="product-search" />
+                <table class="sku-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Category</th>
+                            <th>Product Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-table-body">
+                        </tbody>
+                </table>
+            </div>
 
-      <table class="table table-bordered table-hover">
-        <thead class="table-light text-center">
-          <tr>
-            <th>No.</th>
-            <th>Category</th>
-            <th>Product Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="product-table-body"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Add/Edit Product Card   (moved outside products-view) -->
-  <div id="add-edit-card" class="card-section hidden">
-    <div class="card-header">
-      <h4 id="form-title">Add/Edit Product</h4>
-    </div>
-    <div class="card-body">
-      <form id="product-form">
-        <label for="product-category">Category</label>
-        <input type="text" id="product-category" class="input-field" required>
-
-        <label for="product-name">Product Name</label>
-        <input type="text" id="product-name" class="input-field" required>
-
-        <div class="form-actions">
-          <button type="submit" class="btn-primary">Save</button>
-          <button type="button" id="cancel-edit" class="btn-secondary">Cancel</button>
+            <div id="add-product" class="inner-card hidden">
+                <h2>Add Product</h2>
+                <form id="product-form">
+                    <input type="text" id="product-category" placeholder="Category" class="search-input" required>
+                    <input type="text" id="product-name" placeholder="Product Name" class="search-input" required>
+                    <button type="submit" class="sku-button">Save Product</button>
+                    <button type="button" class="sku-button" onclick="activateProductTab(document.querySelector('.top-buttons .sku-button'), 'manage-products')">Cancel</button>
+                </form>
+            </div>
         </div>
-      </form>
     </div>
-  </div>
 </section>
   <!-- Units Section -->
         <section id="units-card" class="hidden slide-in-card">
