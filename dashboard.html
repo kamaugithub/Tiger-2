@@ -374,7 +374,15 @@
             <div id="add-product" class="inner-card hidden">
                 <h2>Add Product</h2>
                 <form id="product-form">
-                    <input type="text" id="product-category" placeholder="Category" class="search-input" required>
+<label for="product-category" class="sr-only">Category</label>
+<select id="product-category" class="search-input" required>
+    <option value="" disabled selected>Select Category</option>
+    <option value="tvs">tvs</option>
+    <option value="phones">phones</option>
+    <option value="Fridge">Fridge</option>
+    <option value="charger">charger</option>
+    <option value="charger-B">charger-B</option>
+</select>
                     <input type="text" id="product-name" placeholder="Product Name" class="search-input" required>
                     <button type="submit" class="sku-button">Save Product</button>
                     <button type="button" class="sku-button" onclick="activateProductTab(document.querySelector('.top-buttons .sku-button'), 'manage-products')">Cancel</button>
@@ -435,12 +443,14 @@
       </main>
     </div>
   </div>
-
   <script src="script.js"></script>
   <script src="products.js"></script>
   <script src="customers.js"></script>
   <script src="suppliers.js"></script>
     <script src="categories.js"></script>
       <script src="search.js"></script>
+      <script src="light-dark.js"></script>
+      <!-- Floating Light/Dark Toggle -->
+<button id="theme-toggle" title="Toggle Light/Dark Mode">🌙</button>
 </body>
 </html>

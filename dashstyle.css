@@ -999,5 +999,151 @@ th, td {
 /* Add some spacing for the icons */
 .action-icons .edit-icon,
 .action-icons .delete-icon {
-    margin: 0 5px;
+    margin: 0 9px;
 }
+
+#theme-toggle {
+  position: fixed;
+  bottom: 20px;     
+  right: 20px;      
+  background-color: #fff; 
+  color: #000;           
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ===== DARK MODE THEME ===== */
+body.dark {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+/* Sidebar */
+body.dark .sidebar {
+    background-color: #1a1a1a !important;
+    color: #f0f0f0 !important;
+}
+
+body.dark .sidebar a {
+    color: #ddd !important;
+}
+
+body.dark .sidebar a:hover {
+    background-color: #2a2a2a !important;
+}
+
+/* Main content area */
+body.dark .main-content {
+    background-color: #181818 !important;
+    color: #f0f0f0 !important;
+}
+
+/* Cards */
+body.dark .card,
+body.dark .inner-card {
+    background-color: #1f1f1f !important;
+    color: #f0f0f0 !important;
+    border-color: #333 !important;
+}
+
+/* Tables */
+body.dark table {
+    background-color: #1f1f1f !important;
+    color: #f0f0f0 !important;
+}
+
+body.dark table th {
+    background-color: #2a2a2a !important;
+    color: #f0f0f0 !important;
+}
+
+body.dark table td {
+    background-color: #1f1f1f !important;
+    color: #f0f0f0 !important;
+}
+
+/* Buttons */
+body.dark .btn {
+    background-color: #333 !important;
+    color: #f0f0f0 !important;
+    border-color: #555 !important;
+}
+
+body.dark .btn:hover {
+    background-color: #444 !important;
+}
+
+/* Inputs and forms */
+body.dark input,
+body.dark select,
+body.dark textarea {
+    background-color: #2a2a2a !important;
+    color: #f0f0f0 !important;
+    border: 1px solid #555 !important;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+    color: #bbb !important;
+}
+
+/* Modal windows */
+body.dark .modal-content {
+    background-color: #1f1f1f !important;
+    color: #f0f0f0 !important;
+}
+
+/* Top navigation/header */
+body.dark .navbar,
+body.dark header {
+    background-color: #1a1a1a !important;
+    color: #f0f0f0 !important;
+}
+/* Ensure cards, tables, inputs, forms respond immediately */
+body.dark .main-content,
+body.dark .welcome-card,
+body.dark .card,
+body.dark .inner-card,
+body.dark table,
+body.dark input,
+body.dark select,
+body.dark textarea,
+body.dark .button-row button,
+body.dark .sku-button {
+    background-color: #1f1f1f !important;
+    color: #f0f0f0 !important;
+    border-color: #333 !important;
+}
+
+/* Table headers */
+body.dark table th {
+    background-color: #2a2a2a !important;
+    color: #f0f0f0 !important;
+}
+
+/* Table cells */
+body.dark table td {
+    background-color: #1f1f1f !important;
+    color: #f0f0f0 !important;
+}
+
+/* Buttons hover */
+body.dark button:hover {
+    background-color: #444 !important;
+}
+
+

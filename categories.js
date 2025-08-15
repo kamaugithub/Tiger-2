@@ -1,278 +1,147 @@
+// Categories.js
 document.addEventListener("DOMContentLoaded", () => {
-  // Tabs buttons
-  const listTabBtn = document.querySelector("#categories-card .top-buttons .sku-button:first-child");
-  const addTabBtn = document.querySelector("#categories-card .top-buttons .sku-button:last-child");
+    // Elements
+    const manageCategoriesSection = document.getElementById("manage-categories");
+    const addCategorySection = document.getElementById("add-category");
+    const categoryTableBody = manageCategoriesSection.querySelector("tbody");
+    const addCategoryForm = document.getElementById("add-category-form");
+    const categoryNameInput = addCategoryForm.querySelector("input[placeholder='Category Name']");
+    const categoryDescInput = addCategoryForm.querySelector("input[placeholder='Branch']");
+    const formHeading = addCategorySection.querySelector("h2");
 
-  // Sections
-  const listSection = document.getElementById("manage-categories");
-  const addSection = document.getElementById("add-category");
+    // Message box
+    const messageBox = document.createElement('div');
+    messageBox.className = 'message-box hidden';
+    addCategorySection.prepend(messageBox);
 
-  // Category list table body
-  const categoryTableBody = listSection.querySelector("tbody");
+    // Sample categories
+    let categories = [
+        { id: 1, name: "Electronics", description: "demo-branch-ramon" },
+        { id: 2, name: "Clothing", description: "demo-branch-ramon" },
+        { id: 3, name: "Groceries", description: "demo-branch-ramon" }
+    ];
 
-  // Add category form
-  const addCategoryForm = document.getElementById("add-category-form");
-  const categoryNameInput = addCategoryForm.querySelector("input[placeholder='Category Name']");
-  const categoryDescInput = addCategoryForm.querySelector("input[placeholder='Branch']");
+    // Track editing
+    let editingId = null;
 
-  // Form heading (to show "Add Category" or "Edit Category")
-  const addCategoryHeading = addSection.querySelector("h2");
-
-  // Track editing state
-  let editIndex = null;
-
-  // Initial categories
-  let categories = [
-    { name: "Electronics", description: "demo-branch-ramon" },
-    { name: "Clothing", description: "demo-branch-ramon" },
-    { name: "Groceries", description: "demo-branch-ramon" }
-  ];
-
-  // Render categories in table
-  function renderCategories() {
-    categoryTableBody.innerHTML = "";
-    if (categories.length === 0) {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `<td colspan="3" class="text-muted">No categories yet.</td>`;
-      categoryTableBody.appendChild(tr);
-      return;
+    // Show messages
+    function showMessage(message, isError = false) {
+        messageBox.textContent = message;
+        messageBox.className = `message-box ${isError ? 'error' : 'success'}`;
+        messageBox.classList.remove('hidden');
+        setTimeout(() => messageBox.classList.add('hidden'), 3000);
     }
 
-    categories.forEach((cat, index) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${cat.name}</td>
-        <td>${cat.description}</td>
-        <td class="action-icons">
-          <i class="fas fa-pen edit-category" data-index="${index}" title="Edit"></i>
-          <i class="fas fa-trash delete-category" data-index="${index}" title="Delete"></i>
-        </td>
-      `;
-      categoryTableBody.appendChild(tr);
+    // Render table
+    function renderCategories() {
+        categoryTableBody.innerHTML = "";
+        if (categories.length === 0) {
+            categoryTableBody.innerHTML = `<tr><td colspan="3" class="text-muted">No categories yet.</td></tr>`;
+            return;
+        }
+
+        categories.forEach(cat => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${cat.name}</td>
+                <td>${cat.description}</td>
+                <td class="action-icons">
+                    <i class="fas fa-pen edit-category" data-id="${cat.id}" title="Edit"></i>
+                    <i class="fas fa-trash delete-category" data-id="${cat.id}" title="Delete"></i>
+                </td>
+            `;
+            categoryTableBody.appendChild(tr);
+        });
+    }
+
+    // Tab switching
+    window.activateCategoryTab = (button, targetId) => {
+        document.querySelectorAll('#categories-card .inner-card').forEach(card => card.classList.add('hidden'));
+        document.querySelectorAll('#categories-card .top-buttons .sku-button').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(targetId).classList.remove('hidden');
+        button.classList.add('active');
+
+        if (targetId === 'add-category') {
+            formHeading.textContent = "Add Category";
+            addCategoryForm.reset();
+            editingId = null;
+        }
+    };
+
+    // Edit/Delete click
+    categoryTableBody.addEventListener('click', e => {
+        const target = e.target;
+        const id = Number(target.dataset.id);
+        if (isNaN(id)) return;
+
+        const category = categories.find(cat => cat.id === id);
+        if (!category) return;
+
+        if (target.classList.contains('edit-category')) {
+            // Prefill form with clicked item
+            editingId = id;
+            categoryNameInput.value = category.name;
+            categoryDescInput.value = category.description;
+            formHeading.textContent = "Edit Category";
+
+            // Show Add/Edit form in place of table
+            activateCategoryTab(
+                document.querySelector("#categories-card .top-buttons .sku-button:last-child"),
+                'add-category'
+            );
+        }
+
+        if (target.classList.contains('delete-category')) {
+            if (confirm("Are you sure you want to delete this category?")) {
+                const index = categories.findIndex(cat => cat.id === id);
+                if (index > -1) {
+                    categories.splice(index, 1);
+                    renderCategories();
+                    showMessage("Category deleted successfully!");
+                }
+            }
+        }
     });
 
-    // Delete functionality
-    categoryTableBody.querySelectorAll(".delete-category").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const idx = btn.getAttribute("data-index");
-        categories.splice(idx, 1);
+    // Form submit (Add/Edit)
+    addCategoryForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const name = categoryNameInput.value.trim();
+        const desc = categoryDescInput.value.trim();
+
+        if (!name) return showMessage("Category name cannot be empty.", true);
+
+        if (editingId !== null) {
+            // Update
+            const index = categories.findIndex(cat => cat.id === editingId);
+            if (index === -1) return showMessage("Category not found.", true);
+            if (categories.some(c => c.name.toLowerCase() === name.toLowerCase() && c.id !== editingId)) {
+                return showMessage("Category name already exists.", true);
+            }
+            categories[index].name = name;
+            categories[index].description = desc;
+            editingId = null;
+            showMessage("Category updated successfully!");
+        } else {
+            // Add new
+            if (categories.some(c => c.name.toLowerCase() === name.toLowerCase())) {
+                return showMessage("Category name already exists.", true);
+            }
+            const newId = categories.length > 0 ? Math.max(...categories.map(c => c.id)) + 1 : 1;
+            categories.push({ id: newId, name, description: desc });
+            showMessage("Category added successfully!");
+        }
+
+        addCategoryForm.reset();
         renderCategories();
-      });
+
+        // Return to list view
+        activateCategoryTab(
+            document.querySelector("#categories-card .top-buttons .sku-button:first-child"),
+            'manage-categories'
+        );
     });
 
-    // Edit functionality
-    categoryTableBody.querySelectorAll(".edit-category").forEach(btn => {
-      btn.addEventListener("click", () => {
-        editIndex = btn.getAttribute("data-index");
-        const cat = categories[editIndex];
-        categoryNameInput.value = cat.name;
-        categoryDescInput.value = cat.description;
-
-        // Change heading to indicate edit mode
-        addCategoryHeading.textContent = "Edit Category";
-
-        // Switch to Add Category tab for editing
-        addTabBtn.click();
-      });
-    });
-  }
-
-  // Tab switching
-  listTabBtn.addEventListener("click", () => {
-    listSection.classList.remove("hidden");
-    addSection.classList.add("hidden");
-    listTabBtn.classList.add("active");
-    addTabBtn.classList.remove("active");
-
-    // Reset heading back to Add mode when switching manually
-    addCategoryHeading.textContent = "Add Category";
-  });
-
-  addTabBtn.addEventListener("click", () => {
-    addSection.classList.remove("hidden");
-    listSection.classList.add("hidden");
-    addTabBtn.classList.add("active");
-    listTabBtn.classList.remove("active");
-  });
-
-  // Add / Update category
-  addCategoryForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = categoryNameInput.value.trim();
-    const desc = categoryDescInput.value.trim();
-
-    if (!name) {
-      alert("Category name cannot be empty.");
-      return;
-    }
-
-    if (editIndex !== null) {
-      // Update existing category
-      if (categories.some((c, i) => c.name.toLowerCase() === name.toLowerCase() && i != editIndex)) {
-        alert("Category name already exists.");
-        return;
-      }
-      categories[editIndex] = { name, description: desc };
-      editIndex = null;
-      alert("Category updated successfully!");
-      addCategoryHeading.textContent = "Add Category";
-    } else {
-      // Add new category
-      if (categories.some(c => c.name.toLowerCase() === name.toLowerCase())) {
-        alert("Category already exists.");
-        return;
-      }
-      categories.push({ name, description: desc });
-      alert("Category added successfully!");
-    }
-
-    categoryNameInput.value = "";
-    categoryDescInput.value = "";
+    // Initial render
     renderCategories();
-    // Switch back to list tab
-    listTabBtn.click();
-  });
-
-  // Initial render and show list
-  renderCategories();
-  listTabBtn.click();
-});
-document.addEventListener("DOMContentLoaded", () => {
-  // Tabs buttons
-  const listTabBtn = document.querySelector("#categories-card .top-buttons .sku-button:first-child");
-  const addTabBtn = document.querySelector("#categories-card .top-buttons .sku-button:last-child");
-
-  // Sections
-  const listSection = document.getElementById("manage-categories");
-  const addSection = document.getElementById("add-category");
-
-  // Category list table body
-  const categoryTableBody = listSection.querySelector("tbody");
-
-  // Add category form
-  const addCategoryForm = document.getElementById("add-category-form");
-  const categoryNameInput = addCategoryForm.querySelector("input[placeholder='Category Name']");
-  const categoryDescInput = addCategoryForm.querySelector("input[placeholder='Branch']");
-
-  // Form heading (to show "Add Category" or "Edit Category")
-  const addCategoryHeading = addSection.querySelector("h2");
-
-  // Track editing state
-  let editIndex = null;
-
-  // Initial categories
-  let categories = [
-    { name: "Electronics", description: "demo-branch-ramon" },
-    { name: "Clothing", description: "demo-branch-ramon" },
-    { name: "Groceries", description: "demo-branch-ramon" }
-  ];
-
-  // Render categories in table
-  function renderCategories() {
-    categoryTableBody.innerHTML = "";
-    if (categories.length === 0) {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `<td colspan="3" class="text-muted">No categories yet.</td>`;
-      categoryTableBody.appendChild(tr);
-      return;
-    }
-
-    categories.forEach((cat, index) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${cat.name}</td>
-        <td>${cat.description}</td>
-        <td class="action-icons">
-          <i class="fas fa-pen edit-category" data-index="${index}" title="Edit"></i>
-          <i class="fas fa-trash delete-category" data-index="${index}" title="Delete"></i>
-        </td>
-      `;
-      categoryTableBody.appendChild(tr);
-    });
-
-    // Delete functionality
-    categoryTableBody.querySelectorAll(".delete-category").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const idx = btn.getAttribute("data-index");
-        categories.splice(idx, 1);
-        renderCategories();
-      });
-    });
-
-    // Edit functionality
-    categoryTableBody.querySelectorAll(".edit-category").forEach(btn => {
-      btn.addEventListener("click", () => {
-        editIndex = btn.getAttribute("data-index");
-        const cat = categories[editIndex];
-        categoryNameInput.value = cat.name;
-        categoryDescInput.value = cat.description;
-
-        // Change heading to indicate edit mode
-        addCategoryHeading.textContent = "Edit Category";
-
-        // Switch to Add Category tab for editing
-        addTabBtn.click();
-      });
-    });
-  }
-
-  // Tab switching
-  listTabBtn.addEventListener("click", () => {
-    listSection.classList.remove("hidden");
-    addSection.classList.add("hidden");
-    listTabBtn.classList.add("active");
-    addTabBtn.classList.remove("active");
-
-    // Reset heading back to Add mode when switching manually
-    addCategoryHeading.textContent = "Add Category";
-  });
-
-  addTabBtn.addEventListener("click", () => {
-    addSection.classList.remove("hidden");
-    listSection.classList.add("hidden");
-    addTabBtn.classList.add("active");
-    listTabBtn.classList.remove("active");
-  });
-
-  // Add / Update category
-  addCategoryForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = categoryNameInput.value.trim();
-    const desc = categoryDescInput.value.trim();
-
-    if (!name) {
-      alert("Category name cannot be empty.");
-      return;
-    }
-
-    if (editIndex !== null) {
-      // Update existing category
-      if (categories.some((c, i) => c.name.toLowerCase() === name.toLowerCase() && i != editIndex)) {
-        alert("Category name already exists.");
-        return;
-      }
-      categories[editIndex] = { name, description: desc };
-      editIndex = null;
-      alert("Category updated successfully!");
-      addCategoryHeading.textContent = "Add Category";
-    } else {
-      // Add new category
-      if (categories.some(c => c.name.toLowerCase() === name.toLowerCase())) {
-        alert("Category already exists.");
-        return;
-      }
-      categories.push({ name, description: desc });
-      alert("Category added successfully!");
-    }
-
-    categoryNameInput.value = "";
-    categoryDescInput.value = "";
-    renderCategories();
-    // Switch back to list tab
-    listTabBtn.click();
-  });
-
-  // Initial render and show list
-  renderCategories();
-  listTabBtn.click();
 });
