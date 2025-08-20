@@ -345,6 +345,67 @@
             </div>
           </div>
         </section>
+        <!-- Variations Section -->
+<section id="variations-card" class="hidden slide-in-card">
+  <div class="search-wrapper">
+    <div class="main-card">
+      <div class="top-buttons">
+        <button class="sku-button active" onclick="activateVariationTab(this, 'view-variations')">View Variations</button>
+        <button class="sku-button" onclick="activateVariationTab(this, 'add-variation')">Add Variation</button>
+      </div>
+
+      <!-- View Variations -->
+      <div id="view-variations" class="inner-card">
+        <h2>View Variations</h2>
+        <table class="sku-table">
+          <thead>
+            <tr>
+              <th>ProductName</th>
+              <th>Description</th>
+              <th>SKU</th>
+              <th>Unit</th>
+              <th>Selling Price</th>
+              <th>Reorder Level</th>
+              <th>Available Qty</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="variation-table-body">
+            <tr>
+              <td>Samsung</td>
+              <td>charger-b</td>
+              <td>chg-12</td>
+              <td>pcs</td>
+              <td>500.00</td>
+              <td>5</td>
+              <td>10</td>
+              <td>
+                <button class="sku-button">Edit</button>
+                <button class="sku-button">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Add Variation -->
+      <div id="add-variation" class="inner-card hidden">
+        <h2>Add Variation</h2>
+        <form id="variation-form">
+          <input type="text" placeholder="Variation Name" required class="search-input" />
+          <input type="text" placeholder="SKU" required class="search-input" />
+          <input type="text" placeholder="Unit" class="search-input" />
+          <input type="number" placeholder="Selling Price" required class="search-input" />
+          <input type="number" placeholder="Reorder Level" class="search-input" />
+          <input type="number" placeholder="Available Quantity" class="search-input" />
+          <button type="submit" class="sku-button">Save Variation</button>
+          <button type="button" class="sku-button" onclick="activateVariationTab(document.querySelector('.top-buttons .sku-button'), 'view-variations')">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
    <!-- products section!! -->     
 <section id="products-card" class="hidden slide-in-card">
     <div class="search-wrapper">
@@ -445,6 +506,7 @@
   </div>
   <script src="script.js"></script>
   <script src="products.js"></script>
+  <script src="variations.js"></script>
   <script src="customers.js"></script>
   <script src="suppliers.js"></script>
     <script src="categories.js"></script>

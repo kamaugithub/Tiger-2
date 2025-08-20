@@ -17,7 +17,7 @@ const productForm = document.getElementById('product-form');
 const categoryInput = document.getElementById('product-category');
 const nameInput = document.getElementById('product-name');
 
-let editingIndex = null;
+let editingIndex = null; // only declare once
 
 // ===== Event Listeners =====
 productForm.addEventListener('submit', e => {
@@ -73,21 +73,28 @@ function renderProducts(filter = '') {
             </td>
         `;
 
+        // Edit
         row.querySelector('.edit-icon').addEventListener('click', () => {
-            // Set the form title to "Edit Product"
             document.getElementById('add-product').querySelector('h2').textContent = 'Edit Product';
-
-            // Populate form with product data for editing
             categoryInput.value = product.category;
             nameInput.value = product.name;
             editingIndex = index;
-            
-            // Switch to the 'Add / Edit Product' tab and set the active button
             const addEditBtn = document.querySelector(".sku-button[onclick*='add-product']");
             activateProductTab(addEditBtn, 'add-product');
         });
 
+        // Delete
         row.querySelector('.delete-icon').addEventListener('click', () => deleteProduct(index));
+
+        // Manage Variations (➡ talk to variations.js)
+        row.querySelector('.manage-variations-btn').addEventListener('click', () => {
+            if (typeof openVariationsTab === "function") {
+                openVariationsTab(product, index); 
+            } else {
+                alert("Variations module not loaded.");
+            }
+        });
+
         productTableBody.appendChild(row);
     });
 }
@@ -102,23 +109,15 @@ function deleteProduct(index) {
 
 // ===== Tab Activation Function =====
 function activateProductTab(button, targetId) {
-    // Hide all product content sections
     const allSections = document.querySelectorAll('#products-card .inner-card');
-    allSections.forEach(section => {
-        section.classList.add('hidden');
-    });
+    allSections.forEach(section => section.classList.add('hidden'));
 
-    // Deactivate all product tab buttons
     const allButtons = document.querySelectorAll('#products-card .top-buttons .sku-button');
-    allButtons.forEach(btn => {
-        btn.classList.remove('active');
-    });
+    allButtons.forEach(btn => btn.classList.remove('active'));
 
-    // Show the target section and activate the clicked button
     document.getElementById(targetId).classList.remove('hidden');
     button.classList.add('active');
 
-    // Reset form title and clear inputs if switching to 'add-product'
     if (targetId === 'add-product') {
         document.getElementById('add-product').querySelector('h2').textContent = 'Add Product';
         categoryInput.value = '';
