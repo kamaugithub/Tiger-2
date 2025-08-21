@@ -1179,4 +1179,13 @@ body.dark button:hover {
     cursor: pointer;
     margin-right: 10px;
 }
+/* Hide products card completely when variations card is shown */
+#variations-card:not(.hidden) {
+  position: relative;
+  z-index: 10; /* ensure it's above */
+}
+
+#variations-card:not(.hidden) ~ #products-card {
+  display: none;
+}
 

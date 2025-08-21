@@ -16,15 +16,17 @@ let editingVariationIndex = null;
 function openVariationsTab(product, index) {
     currentProductIndex = index;
 
-    // switch to variations tab
-    const variationsBtn = document.querySelector(".sku-button[onclick*='manage-variations']");
+    // make the variations card visible
+    document.getElementById('variations-card').classList.remove('hidden');
+
+    // switch to "view-variations"
+    const variationsBtn = document.querySelector("#variations-card .sku-button[onclick*='view-variations']");
     if (variationsBtn) {
-        activateVariationTab(variationsBtn, 'manage-variations');
+        activateVariationTab(variationsBtn, 'view-variations');
     }
 
     renderVariations();
 }
-
 // ===== Event Listeners =====
 variationForm.addEventListener('submit', e => {
     e.preventDefault();
