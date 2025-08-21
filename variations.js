@@ -58,26 +58,36 @@ function renderVariations() {
 
     const list = variations[currentProductIndex] || [];
     if (list.length === 0) {
-        variationTableBody.innerHTML = `<tr><td colspan="3" class="text-muted text-center">No variations found.</td></tr>`;
+        variationTableBody.innerHTML = `<tr><td colspan="8" class="text-muted text-center">No variations found.</td></tr>`;
         return;
     }
 
     list.forEach((v, idx) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td class="text-center">${idx + 1}</td>
-            <td class="text-center">${v.name}</td>
-            <td class="text-center">${v.value}</td>
+            <td class="text-center">${v.name || '—'}</td>
+            <td class="text-center">${v.value || '—'}</td>
+            <td class="text-center">${v.sku || '—'}</td>
+            <td class="text-center">${v.unit || '—'}</td>
+            <td class="text-center">${v.price || '—'}</td>
+            <td class="text-center">${v.reorder || '—'}</td>
+            <td class="text-center">${v.qty || '—'}</td>
             <td class="action-icons">
                 <i class="fas fa-pen edit-var" title="Edit"></i>
                 <i class="fas fa-trash delete-var" title="Delete"></i>
+                <i class="fas fa-random convert-var" title="Convert Variations"></i>
             </td>
         `;
 
+        // === events ===
         row.querySelector('.edit-var').addEventListener('click', () => {
             variationNameInput.value = v.name;
             variationValueInput.value = v.value;
             editingVariationIndex = idx;
+
+            // Switch to form
+            const addBtn = document.querySelector("#variations-card .sku-button[onclick*='add-variation']");
+            if (addBtn) activateVariationTab(addBtn, 'add-variation');
         });
 
         row.querySelector('.delete-var').addEventListener('click', () => {
@@ -87,9 +97,14 @@ function renderVariations() {
             }
         });
 
+        row.querySelector('.convert-var').addEventListener('click', () => {
+            openConvertVariationCard(v, idx);
+        });
+
         variationTableBody.appendChild(row);
     });
 }
+
 
 // ===== Tab Activation for Variations =====
 function activateVariationTab(button, targetId) {
@@ -105,4 +120,12 @@ function activateVariationTab(button, targetId) {
 
     document.getElementById(targetId).classList.remove('hidden');
     button.classList.add('active');
+}
+function openConvertVariationCard(variation, index) {
+    document.getElementById('convert-variation-card').classList.remove('hidden');
+    // you can populate with variation info here
+}
+
+function closeConvertVariationCard() {
+    document.getElementById('convert-variation-card').classList.add('hidden');
 }

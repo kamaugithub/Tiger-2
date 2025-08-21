@@ -379,10 +379,12 @@
               <td>500.00</td>
               <td>5</td>
               <td>10</td>
-              <td>
-                <button class="sku-button">Edit</button>
-                <button class="sku-button">Delete</button>
-              </td>
+             <td class="action-icons">
+  <i class="fas fa-pen edit-var" title="Edit"></i>
+  <i class="fas fa-trash delete-var" title="Delete"></i>
+  <i class="fas fa-random convert-var" title="Convert Variations"></i>
+</td>
+
             </tr>
           </tbody>
         </table>
@@ -404,6 +406,13 @@
       </div>
     </div>
   </div>
+  <div id="convert-variation-card" class="inner-card hidden">
+  <h2>Convert Variation</h2>
+  <p>This is where conversion logic will go...</p>
+  <button type="button" class="sku-button"
+    onclick="closeConvertVariationCard()">Close</button>
+</div>
+
 </section>
 
    <!-- products section!! -->     
