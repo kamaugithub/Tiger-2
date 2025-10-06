@@ -1,5 +1,6 @@
  Tiger POS
 
+       GitHub 
 Repository: kamaugithub/Tiger-2 
 Live demo: kamaugithub.github.io/Tiger-2 
 
@@ -28,9 +29,9 @@ On the live site, you’ll see:
 
 At present, much of the work is UI + static logic; the backend and full data flow are likely still pending.
 
----
 
-## 2. Technologies & Tools
+
+ 2. Technologies & Tools
 
 These are the main technologies currently used (or inferred) in the project:
 
@@ -44,9 +45,9 @@ These are the main technologies currently used (or inferred) in the project:
 
 If/when backend is added later, possible technologies might include Node.js, Express, a database (MySQL, PostgreSQL, MongoDB), etc.
 
----
 
-## 3. Features Implemented (UI & Static)
+
+ 3. Features Implemented (UI & Static)
 
 From what I observed, here are the features already represented or partially implemented:
 
