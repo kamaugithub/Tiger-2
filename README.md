@@ -1,7 +1,6 @@
  Tiger POS
 
-       GitHub 
-Repository: kamaugithub/Tiger-2 
+       GitHub  
 Live demo: kamaugithub.github.io/Tiger-2 
 
  Table of Contents
@@ -19,21 +18,14 @@ Live demo: kamaugithub.github.io/Tiger-2
 
 1. Project Overview
 
-Tiger POS is a web-based (front-end) prototype for a retail Point of Sale system intended to help businesses (e.g. stores, pharmacies, stationery, multi-branch retailers) manage their inventory, sales, users, and reporting. Its goal is to provide a sleek, intuitive UI layer now, with plans for integrating full backend logic later.
+Tiger POS is a web-based,(front-end) prototype for a retail Point of Sale system intended to help businesses (e.g. hardware stores, pharmacies, stationery.) manage their inventory, sales, users, and reporting. Its goal is to provide a sleek, intuitive UI layer now, with plans for integrating full backend logic later.
 
-On the live site, you’ll see:
-
- A landing page with About, Features, Contact, and a “Login” link
- A dashboard preview image / mockup
- Descriptions of modules: Inventory, Sales, Customer, Reporting, Multi-Branch, Security, etc. ([kamaugithub.github.io][2])
-
-At present, much of the work is UI + static logic; the backend and full data flow are likely still pending.
 
 
 
  2. Technologies & Tools
 
-These are the main technologies currently used (or inferred) in the project:
+These are the main technologies currently used in the project:
 
 | Layer              | Technology / Tool                               | Purpose                                     |
 | ------------------ | ----------------------------------------------- | ------------------------------------------- |
