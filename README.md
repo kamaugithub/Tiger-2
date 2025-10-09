@@ -1,9 +1,9 @@
-# Tiger POS
+Tiger POS
 
 GitHub: [https://github.com/kamaugithub/Tiger-2](https://github.com/kamaugithub/Tiger-2)
 Live Demo: [https://kamaugithub.github.io/Tiger-2](https://kamaugithub.github.io/Tiger-2)
 
----
+
 
 Table of Contents
 
@@ -18,10 +18,13 @@ Table of Contents
 
 
 
+
  1. Project Overview
 
-**Tiger POS** is a web-based (front-end) prototype for a retail Point of Sale system designed to help businesses (e.g., hardware stores, pharmacies, stationery shops) manage inventory, sales, users, and reporting.
+Tiger POS is a web-based (front-end) prototype for a retail Point of Sale system designed to help businesses (e.g., hardware stores, pharmacies, stationery shops) manage inventory, sales, users, and reporting.
 Its goal is to provide a sleek, intuitive UI layer now, with plans for integrating full backend logic later.
+
+
 
 
 
@@ -36,6 +39,8 @@ Below are the main technologies currently used in the project:
 | JS Modules / Logic | `script.js`, `search.js`, `light-dark.js`, etc. | Core UI logic, search, theme toggling, etc. |
 | Asset Files        | `css/`, `images/`, `js/` directories            | Organizing styles, images, and scripts      |
 | Static Hosting     | GitHub Pages                                    | Hosting the front-end demo site             |
+
+
 
 
 
@@ -110,6 +115,8 @@ Light/Dark Mode: The top toggle button switches between light and dark modes. Th
 
 
 
+
+
  4. Project Structure & Files
 
 Here’s a snapshot of the main directories and files in the repository:
@@ -153,6 +160,8 @@ Here’s a snapshot of the main directories and files in the repository:
 
 
 
+
+
  5. Pending / Future Work
 
 Several functionalities are under development and planned for later implementation:
@@ -189,6 +198,8 @@ Several functionalities are under development and planned for later implementati
 * Cross-browser testing
 * CI/CD pipeline configuration
 * Domain and environment setup for production
+
+
 
 
 
@@ -240,6 +251,8 @@ To move Tiger POS toward a fully functional product, here’s a recommended deve
 
 * Monitor system performance and logs.
 * Roll out new modules incrementally (e.g., payment integrations).
+
+
 
 
 
